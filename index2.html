@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vedre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ربط ملف CSS -->
+  <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="brand">Vedre</div>
+  </div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Step with Confidence</h1>
+    <p>أحذية عصرية بجودة عالية وراحة تدوم طول اليوم</p>
+    <button class="hero-btn">شوف المنتجات</button>
+  </div>
+</section>
+
+<!-- Products Section -->
+<section class="products">
+  <h2 class="section-title">منتجاتنا</h2>
+
+  <!-- Categories Links -->
+  <div class="categories">
+    <a href="women.html" class="cat-btn">حريمي</a>
+    <a href="kids.html" class="cat-btn">أطفالي</a>
+    <a href="bags.html" class="cat-btn">شنط</a>
+    <a href="heels.html" class="cat-btn">هيلزات</a>
+    <a href="boots.html" class="cat-btn">بوتات</a>
+  </div>
+
+  <!-- Featured Products Grid -->
+<div class="product-card">
+  <div class="product-slider">
+    <div class="slide"><img src="hero1.jpeg" alt="Vedre Product"></div>
+    <div class="slide"><img src="hero2.jpeg" alt="Vedre Product"></div>
+    <div class="slide"><img src="hero3.jpeg" alt="Vedre Product"></div>
+    <div class="slide"><img src="hero4.jpeg" alt="Vedre Product"></div>
+  </div>
+  <div class="product-info">
+    <h3>*********</h3>
+    <!-- <p class="price">750 EGP</p> -->
+    <a href="https://wa.me/201150811175?text=اريد%20استفسار%20عن%20Vedre%20Women%20Classic" target="_blank" class="buy-btn">تواصل على واتساب</a>
+  </div>
+  </div>
+
+     <!-- Featured Products Grid -->
+<div class="product-card">
+  <div class="product-slider">
+    <div class="slide"><img src="1.jpeg" alt="Vedre Product"></div>
+    <div class="slide"><img src="2.jpeg" alt="Vedre Product"></div>
+    <div class="slide"><img src="3.jpeg" alt="Vedre Product"></div>
+    <div class="slide"><img src="4.jpeg" alt="Vedre Product"></div>
+  </div>
+  <div class="product-info">
+    <h3>*********</h3>
+    <!-- <p class="price">750 EGP</p> -->
+    <a href="https://wa.me/201150811175?text=اريد%20استفسار%20عن%20Vedre%20Women%20Classic" target="_blank" class="buy-btn">تواصل على واتساب</a>
+  </div>
+  </div>
+
+
+</section>
+
+<!-- WhatsApp Floating Button with Pop-up -->
+<div class="whatsapp-container">
+  <a href="https://wa.me/201150811175?text=السلام عليكم%20اريد%20استفسار%20عن%20منتجات%20Vedre" 
+     target="_blank" 
+     class="whatsapp-btn">
+    <img src="icons8-whatsapp-50(1).png" alt="">
+  </a>
+  <div class="whatsapp-popup">
+    👋 مرحبًا! لديك سؤال؟ تواصل معنا على واتساب!
+  </div>
+</div>
+
+
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Contact Info -->
+    <div class="footer-contact">
+      <h3>Vedre</h3>
+      <p>📍 العنوان: شكري القوتلي - شارع الصياد - بجوار مول بنيان</p>
+      <p>📞 الهاتف: 01150811175</p>
+      <p>💬 واتساب: <a href="https://wa.me/201150811175" target="_blank">اضغط للتواصل</a></p>
+      <p>📘 فيسبوك: <a href="https://facebook.com/vedre" target="_blank">Vedre Facebook</a></p>
+    </div>
+
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <p>© 2026 Vedre. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  const whatsappContainer = document.querySelector('.whatsapp-container');
+  const whatsappBtn = document.querySelector('.whatsapp-btn');
+
+  // عند الضغط على الزر
+  whatsappBtn.addEventListener('click', () => {
+    whatsappContainer.classList.add('show-popup');
+
+    // اختفاء Pop-up بعد 5 ثواني
+    setTimeout(() => {
+      whatsappContainer.classList.remove('show-popup');
+    }, 5000);
+  });
+
+  
+const productCards = document.querySelectorAll('.product-card');
+
+productCards.forEach(card => {
+  const slides = card.querySelectorAll('.slide');
+  let currentIndex = 0;
+
+  // اظهار الصورة الأولى
+  slides[currentIndex].classList.add('active');
+
+  // تغيير الصورة كل 2.5 ثانية
+  setInterval(() => {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
+  }, 2500);
+});
+
+
+</script>
+
+
+</body>
+</html>
