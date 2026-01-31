@@ -92,6 +92,7 @@ body{
 }
 
 /* ================= SALE SECTION ================= */
+
 .sale-section{
   width:100%;
   overflow:hidden;
@@ -99,11 +100,9 @@ body{
   margin:30px 0;
 }
 
-/* ===== Slider ===== */
-
 .sale-slider{
   position:relative;
-  height:240px;
+  height:300px;
   overflow:hidden;
 }
 
@@ -120,8 +119,6 @@ body{
 .sale-slide.active{
   opacity:1;
 }
-
-/* ===== Moving frame ===== */
 
 .sale-ticker{
   background:#1DB954;
@@ -145,18 +142,13 @@ body{
 }
 
 @keyframes tickerMove{
-  from{ transform:translateX(0); }
-  to{ transform:translateX(-100%); }
+  from{transform:translateX(0);}
+  to{transform:translateX(-100%);}
 }
 
-
-/* موبايل */
 @media(max-width:768px){
-  .sale-slider{
-    height:180px;
-  }
+  .sale-slider{height:180px;}
 }
-
 
 /* ================= PRODUCTS ================= */
 

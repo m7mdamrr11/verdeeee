@@ -36,7 +36,8 @@
   </div>
 </section>
 
-<section class="sale-section">
+<!-- Sale Section -->
+<section class="sale-section" aria-label="عروض وخصومات">
 
   <div class="sale-ticker top">
     <div class="ticker-track">
@@ -45,9 +46,9 @@
   </div>
 
   <div class="sale-slider">
-    <img src="hero1.jpeg" class="sale-slide active">
-    <img src="hero2.jpeg" class="sale-slide">
-    <img src="hero3.jpeg" class="sale-slide">
+    <img src="1.jpeg" class="sale-slide active" alt="عرض خصم 50% على أحذية Vedre">
+    <img src="2.jpeg" class="sale-slide" alt="تخفيضات أحذية Vedre">
+    <img src="hero3.jpeg" class="sale-slide" alt="عروض متجر Vedre للأحذية">
   </div>
 
   <div class="sale-ticker bottom">
@@ -57,7 +58,6 @@
   </div>
 
 </section>
-
 
 <!-- Products Section -->
 <section class="products" aria-label="منتجات Vedre">
@@ -192,14 +192,13 @@ const saleSlides = document.querySelectorAll('.sale-slide');
 let saleIndex = 0;
 
 setInterval(() => {
-
   saleSlides[saleIndex].classList.remove('active');
   saleIndex = (saleIndex + 1) % saleSlides.length;
   saleSlides[saleIndex].classList.add('active');
-
 }, 3000);
 </script>
 
 </body>
 </html>
+
 
