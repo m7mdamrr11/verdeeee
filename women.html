@@ -1,36 +1,226 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>Vedre | حريمي</title>
+  <title>Vedre | أحذية حريمي</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-</head>
+  <style>
+    /* ================= PRODUCTS PAGE ================= */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-items: center;
+      padding: 20px;
+    }
 
+    @media(min-width:768px){
+      .products-grid {
+        grid-template-columns: repeat(3,1fr);
+      }
+    }
+
+    .product-card{
+      width:100%;
+      max-width:280px;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 5px 15px rgba(0,0,0,.1);
+      overflow:hidden;
+      text-align:center;
+      position:relative;
+    }
+
+    /* MAIN IMAGE CONTAINER */
+    .product-main-image{
+      position:relative;
+      width:100%;
+      height:250px;
+      overflow:hidden;
+      border-radius:12px 12px 0 0;
+    }
+
+    .product-main-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    /* ARROWS */
+    .arrow{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,0.5);
+      color:#fff;
+      padding:8px 12px;
+      border-radius:50%;
+      cursor:pointer;
+      font-weight:bold;
+      user-select:none;
+      z-index:10;
+    }
+
+    .arrow.left{
+      left:10px;
+    }
+
+    .arrow.right{
+      right:10px;
+    }
+
+    .product-thumbnails{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin:10px 0;
+    }
+
+    .product-thumbnails img{
+      width:60px;
+      height:60px;
+      object-fit:cover;
+      border-radius:8px;
+      cursor:pointer;
+      border:2px solid transparent;
+      transition:.3s;
+    }
+
+    .product-thumbnails img:hover{
+      border-color:#1DB954;
+    }
+
+    .product-info{
+      padding:10px 15px;
+    }
+
+    .product-info h3{
+      font-size:16px;
+      margin-bottom:8px;
+    }
+
+    .buy-btn{
+      background:#1DB954;
+      color:#fff;
+      padding:7px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:14px;
+      transition:.3s;
+      display:inline-block;
+    }
+
+    .buy-btn:hover{
+      background:#0F7A3D;
+      transform:translateY(-2px);
+    }
+
+    @media(max-width:480px){
+      .product-thumbnails img{
+        width:50px;
+        height:50px;
+      }
+    }
+  </style>
+</head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
+<header>
+  <nav class="navbar">
     <div class="brand">Vedre</div>
-  </div>
+  </nav>
+</header>
 
-  <section class="products">
-    <h2 class="section-title">أحذية حريمي</h2>
+<main>
+  <section class="products" aria-label="منتجات Vedre">
+    <h2 class="section-title">منتجات حريمي</h2>
 
     <div class="products-grid">
-      <div class="product-card">
-        <img src="women1.jpg">
-        <h3>Vedre Women Classic</h3>
-        <p class="price">750 EGP</p>
-      </div>
 
-      <div class="product-card">
-        <img src="women2.jpg">
-        <h3>Vedre Women Soft</h3>
-        <p class="price">820 EGP</p>
-      </div>
+      <!-- Product 1 -->
+      <article class="product-card">
+        <div class="product-main-image">
+          <span class="arrow left" onclick="prevSlide(1)">&#10094;</span>
+          <img id="mainImage1" src="hero1.jpeg" alt="حذاء Vedre حريمي">
+          <span class="arrow right" onclick="nextSlide(1)">&#10095;</span>
+        </div>
+
+        <div class="product-thumbnails">
+          <img src="hero1.jpeg" alt="حذاء Vedre" onclick="goToSlide(1,0)">
+          <img src="hero2.jpeg" alt="حذاء Vedre" onclick="goToSlide(1,1)">
+          <img src="hero3.jpeg" alt="حذاء Vedre" onclick="goToSlide(1,2)">
+        </div>
+
+        <div class="product-info">
+          <h3>حذاء حريمي Vedre موديل 1</h3>
+          <a href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre%20موديل%201" target="_blank" class="buy-btn">تواصل على واتساب</a>
+        </div>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="product-card">
+        <div class="product-main-image">
+          <span class="arrow left" onclick="prevSlide(2)">&#10094;</span>
+          <img id="mainImage2" src="hero4.jpeg" alt="حذاء Vedre حريمي">
+          <span class="arrow right" onclick="nextSlide(2)">&#10095;</span>
+        </div>
+
+        <div class="product-thumbnails">
+          <img src="hero4.jpeg" alt="حذاء Vedre" onclick="goToSlide(2,0)">
+          <img src="hero5.jpeg" alt="حذاء Vedre" onclick="goToSlide(2,1)">
+          <img src="hero6.jpeg" alt="حذاء Vedre" onclick="goToSlide(2,2)">
+        </div>
+
+        <div class="product-info">
+          <h3>حذاء حريمي Vedre موديل 2</h3>
+          <a href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre%20موديل%202" target="_blank" class="buy-btn">تواصل على واتساب</a>
+        </div>
+      </article>
+
     </div>
   </section>
+</main>
+
+<script>
+  // مصفوفة الصور لكل منتج
+  const productSlides = {
+    1: ['hero1.jpeg','hero2.jpeg','hero3.jpeg'],
+    2: ['hero4.jpeg','hero5.jpeg','hero6.jpeg']
+  };
+
+  const currentIndex = {1:0, 2:0};
+
+  function showSlide(productId){
+    const mainImg = document.getElementById('mainImage'+productId);
+    mainImg.src = productSlides[productId][currentIndex[productId]];
+  }
+
+  function nextSlide(productId){
+    currentIndex[productId] = (currentIndex[productId]+1) % productSlides[productId].length;
+    showSlide(productId);
+  }
+
+  function prevSlide(productId){
+    currentIndex[productId] = (currentIndex[productId]-1 + productSlides[productId].length) % productSlides[productId].length;
+    showSlide(productId);
+  }
+
+  function goToSlide(productId,index){
+    currentIndex[productId] = index;
+    showSlide(productId);
+  }
+
+  // فتح الصورة بحجم كبير عند الضغط
+  document.querySelectorAll('.product-main-image img').forEach(img=>{
+    img.addEventListener('click', ()=>{
+      window.open(img.src,'_blank');
+    });
+  });
+</script>
 
 </body>
 </html>
+
