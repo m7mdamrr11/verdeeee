@@ -14,6 +14,9 @@
   <link rel="canonical" href="https://vedre.com/">
 
   <link rel="stylesheet" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -30,11 +33,12 @@
 <!-- Hero Section -->
 <section class="hero" aria-label="قسم العنوان الرئيسي">
   <div class="hero-content">
-    <h1>Vedre – متجر أحذية عصرية بجودة عالية</h1>
-    <p>أحذية حريمي وأطفالي وشنط وهيلزات وبوتات بجودة عالية وراحة تدوم طوال اليوم</p>
-    <a href="categories.html" class="hero-btn">شوف المنتجات</a>
+    <h1>اكتشف أناقة Vedre</h1>
+    <p>أفضل أحذية وشنط للأطفال وللحريمي، مع جودة وراحة لا مثيل لها – اطلب الآن بسهولة</p>
+    <a href="#products" class="hero-btn">شوف منتجاتنا</a>
   </div>
 </section>
+
 
 <!-- Sale Section -->
 <section class="sale-section" aria-label="عروض وخصومات">
@@ -60,7 +64,7 @@
 </section>
 
 <!-- Products Section -->
-<section class="products" aria-label="منتجات Vedre">
+<section id="products" class="products" aria-label="منتجات Vedre">
   <h2 class="section-title">منتجاتنا</h2>
 
   <!-- Categories Links -->
@@ -96,6 +100,54 @@
         </a>
       </div>
     </article>
+
+        <!-- Product -->
+    <article class="product-card">
+      <span class="badge-new">NEW</span>
+      <div class="product-slider">
+        <div class="slide"><img src="hero1.jpeg" alt="حذاء Vedre حريمي"></div>
+        <div class="slide"><img src="hero2.jpeg" alt="حذاء نسائي من Vedre"></div>
+        <div class="slide"><img src="hero3.jpeg" alt="حذاء Vedre أنيق"></div>
+        <div class="slide"><img src="hero4.jpeg" alt="حذاء Vedre عصري"></div>
+      </div>
+
+      <div class="product-info">
+        <h3>حذاء حريمي Vedre</h3>
+        <a
+          href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre"
+          target="_blank"
+          rel="noopener"
+          class="buy-btn"
+        >
+          تواصل على واتساب
+        </a>
+      </div>
+    </article>
+
+        <!-- Product -->
+    <article class="product-card">
+      <span class="badge-new">NEW</span>
+      <div class="product-slider">
+        <div class="slide"><img src="hero1.jpeg" alt="حذاء Vedre حريمي"></div>
+        <div class="slide"><img src="hero2.jpeg" alt="حذاء نسائي من Vedre"></div>
+        <div class="slide"><img src="hero3.jpeg" alt="حذاء Vedre أنيق"></div>
+        <div class="slide"><img src="hero4.jpeg" alt="حذاء Vedre عصري"></div>
+      </div>
+
+      <div class="product-info">
+        <h3>حذاء حريمي Vedre</h3>
+        <a
+          href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre"
+          target="_blank"
+          rel="noopener"
+          class="buy-btn"
+        >
+          تواصل على واتساب
+        </a>
+      </div>
+    </article>
+
+    
 
     <!-- Product -->
     <article class="product-card">
@@ -141,27 +193,41 @@
   </div>
 </div>
 
-<footer class="footer">
 
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
   <div class="footer-container">
 
+    <!-- Contact Info -->
     <section class="footer-contact">
-      <h2>التواصل مع Vedre</h2>
-
+      <h2>تواصل معنا</h2>
       <p>📍 العنوان: شكري القوتلي - شارع الصياد - بجوار مول بنيان</p>
       <p>📞 الهاتف: <a href="tel:01150811175">01150811175</a></p>
       <p>💬 واتساب: <a href="https://wa.me/201150811175" target="_blank" rel="noopener">اضغط للتواصل</a></p>
       <p>📘 فيسبوك: <a href="https://facebook.com/vedre" target="_blank" rel="noopener">Vedre Facebook</a></p>
-
     </section>
+
+    <!-- Social Icons -->
+    <div class="footer-social">
+      <a href="https://www.facebook.com/share/1AcNH1Gf2d/" target="_blank" rel="noopener" class="social-link" data-tooltip="Facebook">
+        <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook">
+      </a>
+      <a href="https://www.instagram.com/vedre" target="_blank" rel="noopener" class="social-link" data-tooltip="Instagram">
+        <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
+      </a>
+      <a href="https://wa.me/201150811175" target="_blank" rel="noopener" class="social-link" data-tooltip="WhatsApp">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp.png" alt="WhatsApp">
+      </a>
+    </div>
 
   </div>
 
+  <!-- Footer Bottom -->
   <div class="footer-bottom">
     <p>© 2026 Vedre – جميع الحقوق محفوظة</p>
   </div>
-
 </footer>
+
 
 <script>
 const whatsappContainer = document.querySelector('.whatsapp-container');
