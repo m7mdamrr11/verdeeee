@@ -1,226 +1,417 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>Vedre | أحذية حريمي</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* ================= PRODUCTS PAGE ================= */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      justify-items: center;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<title>Vedre | أحذية حريمي</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    @media(min-width:768px){
-      .products-grid {
-        grid-template-columns: repeat(3,1fr);
-      }
-    }
+<style>
 
-    .product-card{
-      width:100%;
-      max-width:280px;
-      background:#fff;
-      border-radius:12px;
-      box-shadow:0 5px 15px rgba(0,0,0,.1);
-      overflow:hidden;
-      text-align:center;
-      position:relative;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
-    /* MAIN IMAGE CONTAINER */
-    .product-main-image{
-      position:relative;
-      width:100%;
-      height:250px;
-      overflow:hidden;
-      border-radius:12px 12px 0 0;
-    }
+body{background:#f7f7f7}
 
-    .product-main-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      cursor:pointer;
-      transition:.3s;
-    }
+/* header */
 
-    /* ARROWS */
-    .arrow{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(0,0,0,0.5);
-      color:#fff;
-      padding:8px 12px;
-      border-radius:50%;
-      cursor:pointer;
-      font-weight:bold;
-      user-select:none;
-      z-index:10;
-    }
+.header{
+  position:sticky;
+  top:0;
+  background:#fff;
+  height:60px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid #eee;
+  z-index:1000;
+}
 
-    .arrow.left{
-      left:10px;
-    }
+.brand-link{
+  color:#1DB954;
+  font-size:26px;
+  font-weight:bold;
+  text-decoration:none;
+}
 
-    .arrow.right{
-      right:10px;
-    }
+.header h1{
+  color:#1DB954;
+  font-size:22px;
+}
 
-    .product-thumbnails{
-      display:flex;
-      justify-content:center;
-      gap:8px;
-      margin:10px 0;
-    }
+.page-title{
+  text-align:center;
+  padding:20px 10px 10px;
+  font-size:22px;
+  color:#0F7A3D;
+}
 
-    .product-thumbnails img{
-      width:60px;
-      height:60px;
-      object-fit:cover;
-      border-radius:8px;
-      cursor:pointer;
-      border:2px solid transparent;
-      transition:.3s;
-    }
+/* grid */
 
-    .product-thumbnails img:hover{
-      border-color:#1DB954;
-    }
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  padding:15px;
+}
 
-    .product-info{
-      padding:10px 15px;
-    }
+@media(min-width:768px){
+  .products-grid{
+    grid-template-columns:repeat(3,1fr);
+    max-width:1100px;
+    margin:auto;
+  }
+}
 
-    .product-info h3{
-      font-size:16px;
-      margin-bottom:8px;
-    }
+/* card */
 
-    .buy-btn{
-      background:#1DB954;
-      color:#fff;
-      padding:7px 14px;
-      border-radius:8px;
-      text-decoration:none;
-      font-size:14px;
-      transition:.3s;
-      display:inline-block;
-    }
+.product-card{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
 
-    .buy-btn:hover{
-      background:#0F7A3D;
-      transform:translateY(-2px);
-    }
+/* slider */
 
-    @media(max-width:480px){
-      .product-thumbnails img{
-        width:50px;
-        height:50px;
-      }
-    }
-  </style>
+.product-slider{
+  position:relative;
+  width:100%;
+  height:190px;
+  overflow:hidden;
+  background:#eee;
+}
+
+@media(min-width:768px){
+  .product-slider{height:230px}
+}
+
+.product-slider img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+  cursor:pointer;
+}
+
+.product-slider img.active{
+  display:block;
+}
+
+/* arrows */
+
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:32px;
+  height:32px;
+  border:none;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  font-size:18px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10;
+}
+
+.arrow.left{right:8px}
+.arrow.right{left:8px}
+
+/* info */
+
+.product-info{
+  padding:10px;
+  text-align:center;
+}
+
+.product-info h3{
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.buy-btn{
+  display:inline-block;
+  background:#1DB954;
+  color:#fff;
+  padding:7px 14px;
+  border-radius:8px;
+  font-size:13px;
+  text-decoration:none;
+}
+
+/* lightbox */
+
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+  padding:15px;
+}
+
+.lightbox.show{display:flex}
+
+.lightbox img{
+  max-width:100%;
+  max-height:100%;
+  border-radius:10px;
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:15px;
+  background:#fff;
+  border:none;
+  font-size:18px;
+  padding:4px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+</style>
 </head>
 <body>
 
-<header>
-  <nav class="navbar">
-    <div class="brand">Vedre</div>
-  </nav>
+  <header class="header">
+  <a href="index.html" class="brand-link">Vedre</a>
 </header>
 
-<main>
-  <section class="products" aria-label="منتجات Vedre">
-    <h2 class="section-title">منتجات حريمي</h2>
+  <h1>Vedre</h1>
+</header>
 
-    <div class="products-grid">
+<h2 class="page-title">أحذية حريمي</h2>
 
-      <!-- Product 1 -->
-      <article class="product-card">
-        <div class="product-main-image">
-          <span class="arrow left" onclick="prevSlide(1)">&#10094;</span>
-          <img id="mainImage1" src="hero1.jpeg" alt="حذاء Vedre حريمي">
-          <span class="arrow right" onclick="nextSlide(1)">&#10095;</span>
-        </div>
+<section class="products-grid">
 
-        <div class="product-thumbnails">
-          <img src="hero1.jpeg" alt="حذاء Vedre" onclick="goToSlide(1,0)">
-          <img src="hero2.jpeg" alt="حذاء Vedre" onclick="goToSlide(1,1)">
-          <img src="hero3.jpeg" alt="حذاء Vedre" onclick="goToSlide(1,2)">
-        </div>
+<!-- المنتج -->
+<div class="product-card">
 
-        <div class="product-info">
-          <h3>حذاء حريمي Vedre موديل 1</h3>
-          <a href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre%20موديل%201" target="_blank" class="buy-btn">تواصل على واتساب</a>
-        </div>
-      </article>
+  <div class="product-slider">
+    <button class="arrow left">›</button>
+    <button class="arrow right">‹</button>
 
-      <!-- Product 2 -->
-      <article class="product-card">
-        <div class="product-main-image">
-          <span class="arrow left" onclick="prevSlide(2)">&#10094;</span>
-          <img id="mainImage2" src="hero4.jpeg" alt="حذاء Vedre حريمي">
-          <span class="arrow right" onclick="nextSlide(2)">&#10095;</span>
-        </div>
+    <img src="hero1.jpeg">
+    <img src="hero2.jpeg">
+    <img src="hero3.jpeg">
+  </div>
 
-        <div class="product-thumbnails">
-          <img src="hero4.jpeg" alt="حذاء Vedre" onclick="goToSlide(2,0)">
-          <img src="hero5.jpeg" alt="حذاء Vedre" onclick="goToSlide(2,1)">
-          <img src="hero6.jpeg" alt="حذاء Vedre" onclick="goToSlide(2,2)">
-        </div>
+  <div class="product-info">
+    <h3>حذاء حريمي Vedre</h3>
+    <a class="buy-btn"
+       target="_blank"
+       href="https://wa.me/201150811175?text=استفسار%20عن%20حذاء%20حريمي">
+       تواصل واتساب
+    </a>
+  </div>
 
-        <div class="product-info">
-          <h3>حذاء حريمي Vedre موديل 2</h3>
-          <a href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre%20موديل%202" target="_blank" class="buy-btn">تواصل على واتساب</a>
-        </div>
-      </article>
+</div>
 
-    </div>
-  </section>
-</main>
+<!-- المنتج -->
+<div class="product-card">
+
+  <div class="product-slider">
+    <button class="arrow left">›</button>
+    <button class="arrow right">‹</button>
+
+    <img src="hero1.jpeg">
+    <img src="hero2.jpeg">
+    <img src="hero3.jpeg">
+  </div>
+
+  <div class="product-info">
+    <h3>حذاء حريمي Vedre</h3>
+    <a class="buy-btn"
+       target="_blank"
+       href="https://wa.me/201150811175?text=استفسار%20عن%20حذاء%20حريمي">
+       تواصل واتساب
+    </a>
+  </div>
+
+</div>
+
+<!-- المنتج -->
+<div class="product-card">
+
+  <div class="product-slider">
+    <button class="arrow left">›</button>
+    <button class="arrow right">‹</button>
+
+    <img src="hero1.jpeg">
+    <img src="hero2.jpeg">
+    <img src="hero3.jpeg">
+  </div>
+
+  <div class="product-info">
+    <h3>حذاء حريمي Vedre</h3>
+    <a class="buy-btn"
+       target="_blank"
+       href="https://wa.me/201150811175?text=استفسار%20عن%20حذاء%20حريمي">
+       تواصل واتساب
+    </a>
+  </div>
+
+</div>
+
+<!-- المنتج -->
+<div class="product-card">
+
+  <div class="product-slider">
+    <button class="arrow left">›</button>
+    <button class="arrow right">‹</button>
+
+    <img src="hero1.jpeg">
+    <img src="hero2.jpeg">
+    <img src="hero3.jpeg">
+  </div>
+
+  <div class="product-info">
+    <h3>حذاء حريمي Vedre</h3>
+    <a class="buy-btn"
+       target="_blank"
+       href="https://wa.me/201150811175?text=استفسار%20عن%20حذاء%20حريمي">
+       تواصل واتساب
+    </a>
+  </div>
+
+</div>
+
+<!-- المنتج -->
+<div class="product-card">
+
+  <div class="product-slider">
+    <button class="arrow left">›</button>
+    <button class="arrow right">‹</button>
+
+    <img src="hero1.jpeg">
+    <img src="hero2.jpeg">
+    <img src="hero3.jpeg">
+  </div>
+
+  <div class="product-info">
+    <h3>حذاء حريمي Vedre</h3>
+    <a class="buy-btn"
+       target="_blank"
+       href="https://wa.me/201150811175?text=استفسار%20عن%20حذاء%20حريمي">
+       تواصل واتساب
+    </a>
+  </div>
+
+</div>
+
+<!-- المنتج -->
+<div class="product-card">
+
+  <div class="product-slider">
+    <button class="arrow left">›</button>
+    <button class="arrow right">‹</button>
+
+    <img src="hero1.jpeg">
+    <img src="hero2.jpeg">
+    <img src="hero3.jpeg">
+  </div>
+
+  <div class="product-info">
+    <h3>حذاء حريمي Vedre</h3>
+    <a class="buy-btn"
+       target="_blank"
+       href="https://wa.me/201150811175?text=استفسار%20عن%20حذاء%20حريمي">
+       تواصل واتساب
+    </a>
+  </div>
+
+</div>
+
+
+<!-- تقدر تنسخ البلوك ده لأي منتج جديد بدون أي تعديل في الصور -->
+
+
+</section>
+
+
+<div class="lightbox" id="lightbox">
+  <button class="close">✕</button>
+  <img id="lightboxImg">
+</div>
+
 
 <script>
-  // مصفوفة الصور لكل منتج
-  const productSlides = {
-    1: ['hero1.jpeg','hero2.jpeg','hero3.jpeg'],
-    2: ['hero4.jpeg','hero5.jpeg','hero6.jpeg']
-  };
 
-  const currentIndex = {1:0, 2:0};
+const sliders = document.querySelectorAll('.product-slider');
 
-  function showSlide(productId){
-    const mainImg = document.getElementById('mainImage'+productId);
-    mainImg.src = productSlides[productId][currentIndex[productId]];
+sliders.forEach(slider => {
+
+  const images = slider.querySelectorAll('img');
+  const prev = slider.querySelector('.left');
+  const next = slider.querySelector('.right');
+
+  let index = 0;
+
+  // الحل هنا 👇
+  images.forEach(img => img.classList.remove('active'));
+  images[0].classList.add('active');
+
+  if(images.length <= 1){
+    prev.style.display = "none";
+    next.style.display = "none";
   }
 
-  function nextSlide(productId){
-    currentIndex[productId] = (currentIndex[productId]+1) % productSlides[productId].length;
-    showSlide(productId);
+  function show(i){
+    images.forEach(img => img.classList.remove('active'));
+    images[i].classList.add('active');
   }
 
-  function prevSlide(productId){
-    currentIndex[productId] = (currentIndex[productId]-1 + productSlides[productId].length) % productSlides[productId].length;
-    showSlide(productId);
-  }
+  prev.addEventListener('click',()=>{
+    index--;
+    if(index < 0) index = images.length - 1;
+    show(index);
+  });
 
-  function goToSlide(productId,index){
-    currentIndex[productId] = index;
-    showSlide(productId);
-  }
+  next.addEventListener('click',()=>{
+    index++;
+    if(index >= images.length) index = 0;
+    show(index);
+  });
 
-  // فتح الصورة بحجم كبير عند الضغط
-  document.querySelectorAll('.product-main-image img').forEach(img=>{
-    img.addEventListener('click', ()=>{
-      window.open(img.src,'_blank');
+  images.forEach(img=>{
+    img.addEventListener('click',()=>{
+      openLightbox(img.src);
     });
   });
+
+});
+
+
+/* lightbox */
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const closeBtn = document.querySelector('.close');
+
+function openLightbox(src){
+  lightboxImg.src = src;
+  lightbox.classList.add('show');
+}
+
+closeBtn.onclick = ()=> lightbox.classList.remove('show');
+
+lightbox.addEventListener('click',e=>{
+  if(e.target === lightbox){
+    lightbox.classList.remove('show');
+  }
+});
+
 </script>
 
 </body>
 </html>
-
