@@ -178,6 +178,90 @@ body{background:#fff;color:#222}
   max-height:90%;
   border-radius:10px;
 }
+
+.order-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:10000;
+}
+
+.order-modal.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.order-box{
+  background:#fff;
+  width:90%;
+  max-width:360px;
+  padding:16px;
+  border-radius:12px;
+}
+
+.order-box h3{
+  text-align:center;
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.order-box input{
+  width:100%;
+  margin-bottom:8px;
+  padding:8px 10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  font-size:13px;
+}
+
+.order-actions{
+  display:flex;
+  gap:8px;
+  margin-top:6px;
+}
+
+.order-actions button{
+  flex:1;
+  padding:8px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.order-actions button[type="submit"]{
+  background:#1DB954;
+  color:#fff;
+}
+
+#closeOrder{
+  background:#eee;
+}
+
+.size-btn,
+.color-btn{
+  padding:4px 8px;
+  margin:2px;
+  border:1px solid #1DB954;
+  background:#fff;
+  color:#1DB954;
+  border-radius:6px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.size-btn.active,
+.color-btn.active{
+  background:#1DB954;
+  color:#fff;
+}
+
 </style>
 </head>
 <body>
@@ -201,8 +285,8 @@ body{background:#fff;color:#222}
 <button class="arrow right">&#10094;</button>
 </div>
 <div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<p>مقاسات 31-36</p>
+<h3>Nike اطفال</h3>
+<pre>مقاسات 31-36</pre>
 <a class="buy-btn" target="_blank"
 href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
 </div>
@@ -469,8 +553,32 @@ href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20ح�
   <img id="lightboxImg">
 </div>
 
+
+<!-- Order Modal -->
+<div class="order-modal" id="orderModal">
+  <div class="order-box">
+    <h3 id="orderTitle">تأكيد الطلب</h3>
+
+    <form id="orderForm">
+      <input type="text" id="custName" placeholder="الاسم" required>
+      <input type="tel" id="custPhone" placeholder="رقم التليفون" required>
+      <input type="text" id="custAddress" placeholder="العنوان" required>
+
+      <input type="text" id="custSize" placeholder="المقاس" required>
+      <input type="text" id="custColor" placeholder="اللون / الموديل" required>
+
+      <div class="order-actions">
+        <button type="submit">تاكيد الطلب</button>
+        <button type="button" id="closeOrder">إلغاء</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
-document.querySelectorAll('.product-card').forEach(card => {
+/* ================== slider + dots + lightbox ================== */
+
+document.querySelectorAll('.product-card').forEach(card=>{
 
   const images = card.querySelectorAll('.slider-image');
   const next  = card.querySelector('.arrow.right');
@@ -529,7 +637,6 @@ document.querySelectorAll('.product-card').forEach(card => {
 
 });
 
-// ---- لايت بوكس ----
 document.getElementById('lightbox').onclick=function(){
   this.classList.remove('show');
 };
@@ -540,40 +647,168 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-// ---- واتساب مع جمع بيانات العميل ----
 
-document.querySelectorAll('.buy-btn').forEach(btn => {
+/* ================== per product sizes & colors ================== */
 
-  btn.addEventListener('click', function(e){
+const productsOptions = [
+  { sizes:["31","32","33","34","35","36"], colors:["أسود","لبني","ييج"] },
+  { sizes:["31","32","33","34","35","36"],     colors:["أسود","ابيض/نبيتي","ابيض/كحلي"] },
+  { sizes:["33","34","35"],     colors:["أسود","رمادي"] },
+  { sizes:["32","33","34","35","36"], colors:["أبيض","كحلي"] },
+  { sizes:["30","31"],         colors:["وردي","بنفسجي"] },
+  { sizes:["31","32","33"],     colors:["أسود","أحمر"] },
+  { sizes:["32","33","34"],     colors:["أزرق","أبيض"] },
+  { sizes:["30","31","32","33"],colors:["أسود"] },
+  { sizes:["33","34","35"],     colors:["أبيض","كحلي"] },
+  { sizes:["31","32","33","34"],colors:["أسود","رمادي"] },
+  // زوّد على نفس النمط بعدد منتجاتك
+];
+
+document.querySelectorAll('.product-card').forEach((card,index)=>{
+
+  const info = card.querySelector('.product-info');
+  const buyBtn = info.querySelector('.buy-btn');
+
+  const config = productsOptions[index];
+
+  if(!config) return;
+
+  /* ===== المقاسات ===== */
+
+  const sizeWrap = document.createElement("div");
+  sizeWrap.className = "sizes-wrap";
+
+  config.sizes.forEach(size=>{
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "size-btn";
+    btn.textContent = size;
+
+    btn.onclick = ()=>{
+      sizeWrap.querySelectorAll(".size-btn")
+        .forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      card.dataset.size = size;
+    };
+
+    sizeWrap.appendChild(btn);
+  });
+
+  /* ===== الألوان ===== */
+
+  const colorWrap = document.createElement("div");
+  colorWrap.className = "colors-wrap";
+
+  config.colors.forEach(color=>{
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "color-btn";
+    btn.textContent = color;
+
+    btn.onclick = ()=>{
+      colorWrap.querySelectorAll(".color-btn")
+        .forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      card.dataset.color = color;
+    };
+
+    colorWrap.appendChild(btn);
+  });
+
+  info.insertBefore(sizeWrap, buyBtn);
+  info.insertBefore(colorWrap, buyBtn);
+
+});
+
+
+/* ===== ربط الاختيارات بالفورم المنبثق ===== */
+
+document.querySelectorAll(".buy-btn").forEach(btn=>{
+
+  btn.addEventListener("click",function(){
+
+    const card = this.closest(".product-card");
+
+    const size  = card.dataset.size  || "";
+    const color = card.dataset.color || "";
+
+    const sizeInput  = document.getElementById("custSize");
+    const colorInput = document.getElementById("custColor");
+
+    if(sizeInput)  sizeInput.value  = size;
+    if(colorInput) colorInput.value = color;
+
+  });
+
+});
+
+
+/* ================== order form + whatsapp ================== */
+
+let selectedCard = null;
+
+const modal = document.getElementById("orderModal");
+const form  = document.getElementById("orderForm");
+const closeBtn = document.getElementById("closeOrder");
+const orderTitle = document.getElementById("orderTitle");
+
+document.querySelectorAll(".buy-btn").forEach(btn=>{
+
+  btn.addEventListener("click",function(e){
 
     e.preventDefault();
 
-    const name = prompt("من فضلك اكتب اسمك:");
-    if(!name) return;
+    selectedCard = this.closest(".product-card");
 
-    const phone = prompt("من فضلك اكتب رقم الهاتف:");
-    if(!phone) return;
+    const title =
+      selectedCard.querySelector("h3")?.innerText || "";
 
-    const address = prompt("من فضلك اكتب عنوانك:");
-    if(!address) return;
+    orderTitle.innerText = title;
 
-    const size = prompt("من فضلك اختر المقاس:");
-    if(!size) return;
+    modal.classList.add("show");
 
-    const color = prompt("من فضلك اختر اللون / الموديل:");
-    if(!color) return;
+  });
 
-    const card = this.closest('.product-card');
-    if(!card) return;
+});
 
-    const activeImg = card.querySelector('.slider-image.active');
-    if(!activeImg) return;
+closeBtn.onclick = ()=>{
+  modal.classList.remove("show");
+  form.reset();
+};
 
-    const imgUrl = new URL(activeImg.src, window.location.href).href;
+modal.addEventListener("click",e=>{
+  if(e.target === modal){
+    modal.classList.remove("show");
+    form.reset();
+  }
+});
 
-    const title = card.querySelector('h3')?.innerText || '';
 
-    const text =
+form.addEventListener("submit",function(e){
+
+  e.preventDefault();
+
+  if(!selectedCard) return;
+
+  const name    = document.getElementById("custName").value.trim();
+  const phone   = document.getElementById("custPhone").value.trim();
+  const address = document.getElementById("custAddress").value.trim();
+  const size    = document.getElementById("custSize").value.trim();
+  const color   = document.getElementById("custColor").value.trim();
+
+  if(!name || !phone || !address || !size || !color) return;
+
+  const activeImg =
+    selectedCard.querySelector(".slider-image.active");
+
+  if(!activeImg) return;
+
+  const imgUrl = new URL(activeImg.src, window.location.href).href;
+
+  const title =
+    selectedCard.querySelector("h3")?.innerText || "";
+
+  const text =
 `اريد طلب"${title}"
 الاسم: ${name}
 رقم الهاتف: ${phone}
@@ -583,15 +818,13 @@ document.querySelectorAll('.buy-btn').forEach(btn => {
 الصورة:
 ${imgUrl}`;
 
-    // ⬅️ يفتح واتساب فورًا بعد إدخال آخر بيانات
-    window.location.href =
-      "https://wa.me/201150811175?text=" + encodeURIComponent(text);
-
-  });
+  window.location.href =
+    "https://wa.me/201150811175?text=" +
+    encodeURIComponent(text);
 
 });
-
 </script>
+
 
 </body>
 </html>
