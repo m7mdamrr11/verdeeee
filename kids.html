@@ -5,42 +5,37 @@
 <title>Vedre | أحذية أطفال</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 <style>
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Tajawal', Arial, sans-serif; /* الخط العربي النهائي */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Tajawal',Arial,sans-serif;
 }
 
-
-body{
-  background:#fff;
-  color:#222;
-}
+body{background:#fff;color:#222}
 
 /* header */
-
 .header{
   position:sticky;
   top:0;
-  background:#fff;
+  background:#1DB954;
   padding:14px;
   text-align:center;
-  border-bottom:1px solid #eee;
+  /* border:5px solid #0F7A3D; */
   z-index:1000;
 }
 
 .brand-link{
-  color:#1DB954;
+  color:#fff;
   font-size:22px;
   font-weight:bold;
   text-decoration:none;
 }
 
 /* page */
-
 .page-title{
   text-align:center;
   margin:18px 0 10px;
@@ -48,12 +43,9 @@ body{
   font-size:20px;
 }
 
-.page-products{
-  padding:10px 14px 40px;
-}
+.page-products{padding:10px 14px 40px}
 
 /* grid */
-
 .products-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -61,13 +53,10 @@ body{
 }
 
 @media(min-width:768px){
-  .products-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
+  .products-grid{grid-template-columns:repeat(4,1fr)}
 }
 
 /* card */
-
 .product-card{
   background:#fff;
   border-radius:12px;
@@ -76,7 +65,6 @@ body{
 }
 
 /* slider */
-
 .product-slider{
   position:relative;
   width:100%;
@@ -94,12 +82,9 @@ body{
   cursor:pointer;
 }
 
-.slider-image.active{
-  display:block;
-}
+.slider-image.active{display:block}
 
 /* arrows */
-
 .arrow{
   position:absolute;
   top:50%;
@@ -115,11 +100,10 @@ body{
   z-index:5;
 }
 
-.arrow.left{ right:8px; }
-.arrow.right{ left:8px; }
+.arrow.left{right:8px}
+.arrow.right{left:8px}
 
 /* info */
-
 .product-info{
   padding:10px;
   text-align:center;
@@ -127,6 +111,11 @@ body{
 
 .product-info h3{
   font-size:14px;
+  margin-bottom:6px;
+}
+
+.product-info p{
+  font-size:13px;
   margin-bottom:8px;
 }
 
@@ -140,8 +129,32 @@ body{
   font-size:13px;
 }
 
-/* lightbox */
+/* dots */
+.slider-dots{
+  position:absolute;
+  bottom:8px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+  z-index:6;
+}
 
+.slider-dots span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:rgba(255,255,255,.6);
+  cursor:pointer;
+  transition:.2s;
+}
+
+.slider-dots span.active{
+  background:#1DB954;
+  transform:scale(1.2);
+}
+
+/* lightbox */
 .lightbox{
   position:fixed;
   inset:0;
@@ -165,11 +178,7 @@ body{
   max-height:90%;
   border-radius:10px;
 }
-
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-
 </head>
 <body>
 
@@ -180,576 +189,409 @@ body{
 <h1 class="page-title">أحذية أطفال</h1>
 
 <main class="page-products">
-
 <section class="products-grid">
 
 <!-- product 1 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids1-2.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids1.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids1-3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
-</article>
-
-<!-- product 1 -->
-<article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids2.2.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids2.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
-</article>
-
-<!-- product 1 -->
-<article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids3.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids3.1.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <!-- <img src="k3.jpg" class="slider-image" alt="حذاء أطفال Vedre"> -->
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
-</article>
-
-<!-- product 1 -->
-<article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids4.2.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids4.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids4.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
-</article>
-
-<!-- product 1 -->
-<article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids5.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids5.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <!-- <img src="k3.jpg" class="slider-image" alt="حذاء أطفال Vedre"> -->
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
-</article>
-
-<!-- product 1 -->
-<article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids6.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids6.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids6.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
-</article>
-
-<!-- product 1 -->
-<article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids7.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids7.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <!-- <img src="k3.jpg" class="slider-image" alt="حذاء أطفال Vedre"> -->
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
-</article>
-
-<!-- product 1 -->
-<article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids8.2.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids8.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <!-- <img src="k3.jpg" class="slider-image" alt="حذاء أطفال Vedre"> -->
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids1-2.jpg" class="slider-image active" loading="lazy">
+<img src="kids1.jpg" class="slider-image" loading="lazy">
+<img src="kids1-3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<p>مقاسات 31-36</p>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
 <!-- product 2 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids9.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids9.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids9.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids9.4.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <!-- <img src="kids9..jpg" class="slider-image" alt="حذاء أطفال Vedre"> -->
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids2.2.jpg" class="slider-image active" loading="lazy">
+<img src="kids2.jpg" class="slider-image" loading="lazy">
+<img src="kids2.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<p>مقاسات 23-29</p>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 3 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids10.2.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids10.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids10.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids3.jpg" class="slider-image active" loading="lazy">
+<img src="kids3.1.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 4 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids11.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids11.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids11.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids4.2.jpg" class="slider-image active" loading="lazy">
+<img src="kids4.jpg" class="slider-image" loading="lazy">
+<img src="kids4.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 5 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids12.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids12.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids12.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids5.jpg" class="slider-image active" loading="lazy">
+<img src="kids5.2.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 6 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids13.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids13.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <!-- <img src="kids13.3.jpg" class="slider-image" alt="حذاء أطفال Vedre"> -->
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids6.jpg" class="slider-image active" loading="lazy">
+<img src="kids6.2.jpg" class="slider-image" loading="lazy">
+<img src="kids6.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>ميلانو اديدس
+</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال ميلانو اديدس%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 7 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids14.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids14.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids14.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids7.jpg" class="slider-image active" loading="lazy">
+<img src="kids7.2.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 8 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids15.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids15.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids15.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids8.2.jpg" class="slider-image active" loading="lazy">
+<img src="kids8.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 9 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids16.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids16.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids16.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids9.jpg" class="slider-image active" loading="lazy">
+<img src="kids9.2.jpg" class="slider-image" loading="lazy">
+<img src="kids9.3.jpg" class="slider-image" loading="lazy">
+<img src="kids9.4.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
-<!-- product 1 -->
+<!-- product 10 -->
 <article class="product-card">
-
-  <div class="product-slider">
-
-    <button class="arrow left">&#10094;</button>
-
-    <img src="kids18.jpg" class="slider-image active" alt="حذاء أطفال Vedre">
-
-    <img src="kids18.2.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <img src="kids18.3.jpg" class="slider-image" alt="حذاء أطفال Vedre">
-
-    <button class="arrow right">&#10095;</button>
-
-  </div>
-
-  <div class="product-info">
-    <h3>حذاء أطفال Vedre</h3>
-
-    <a
-      class="buy-btn"
-      target="_blank"
-      href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">
-      تواصل واتساب
-    </a>
-  </div>
-
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids10.2.jpg" class="slider-image active" loading="lazy">
+<img src="kids10.jpg" class="slider-image" loading="lazy">
+<img src="kids10.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
 </article>
 
+<!-- product 11 -->
+<article class="product-card">
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids11.jpg" class="slider-image active" loading="lazy">
+<img src="kids11.2.jpg" class="slider-image" loading="lazy">
+<img src="kids11.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
+</article>
 
+<!-- product 12 -->
+<article class="product-card">
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids12.jpg" class="slider-image active" loading="lazy">
+<img src="kids12.2.jpg" class="slider-image" loading="lazy">
+<img src="kids12.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
+</article>
+
+<!-- product 13 -->
+<article class="product-card">
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids13.jpg" class="slider-image active" loading="lazy">
+<img src="kids13.2.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
+</article>
+
+<!-- product 14 -->
+<article class="product-card">
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids14.jpg" class="slider-image active" loading="lazy">
+<img src="kids14.3.jpg" class="slider-image" loading="lazy">
+<img src="kids14.2.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
+</article>
+
+<!-- product 15 -->
+<article class="product-card">
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids15.jpg" class="slider-image active" loading="lazy">
+<img src="kids15.2.jpg" class="slider-image" loading="lazy">
+<img src="kids15.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
+</article>
+
+<!-- product 16 -->
+<article class="product-card">
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids16.jpg" class="slider-image active" loading="lazy">
+<img src="kids16.2.jpg" class="slider-image" loading="lazy">
+<img src="kids16.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
+</article>
+
+<!-- product 18 -->
+<article class="product-card">
+<div class="product-slider">
+<button class="arrow left">&#10095;</button>
+<img src="kids18.jpg" class="slider-image active" loading="lazy">
+<img src="kids18.2.jpg" class="slider-image" loading="lazy">
+<img src="kids18.3.jpg" class="slider-image" loading="lazy">
+<button class="arrow right">&#10094;</button>
+</div>
+<div class="product-info">
+<h3>حذاء أطفال Vedre</h3>
+<a class="buy-btn" target="_blank"
+href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
+</div>
+</article>
 
 </section>
-
 </main>
 
-<!-- lightbox -->
 <div class="lightbox" id="lightbox">
   <img id="lightboxImg">
 </div>
 
 <script>
-
-document.querySelectorAll('.product-card').forEach(card=>{
+document.querySelectorAll('.product-card').forEach(card => {
 
   const images = card.querySelectorAll('.slider-image');
   const next  = card.querySelector('.arrow.right');
   const prev  = card.querySelector('.arrow.left');
+  const slider = card.querySelector('.product-slider');
 
   let i = 0;
 
+  const dotsWrap = document.createElement('div');
+  dotsWrap.className = 'slider-dots';
+  const dots = [];
+
+  images.forEach((img,index)=>{
+    const dot = document.createElement('span');
+    if(index===0) dot.classList.add('active');
+
+    dot.addEventListener('click',e=>{
+      e.stopPropagation();
+      i=index;
+      show(i);
+    });
+
+    dotsWrap.appendChild(dot);
+    dots.push(dot);
+  });
+
+  slider.appendChild(dotsWrap);
+
   function show(n){
     images.forEach(img=>img.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
     images[n].classList.add('active');
+    dots[n].classList.add('active');
   }
 
-  next.addEventListener('click', e=>{
+  next.addEventListener('click',e=>{
     e.stopPropagation();
-    i = (i+1) % images.length;
+    i=(i+1)%images.length;
     show(i);
   });
 
-  prev.addEventListener('click', e=>{
+  prev.addEventListener('click',e=>{
     e.stopPropagation();
-    i = (i-1+images.length) % images.length;
+    i=(i-1+images.length)%images.length;
     show(i);
   });
 
   images.forEach(img=>{
-    img.addEventListener('click', ()=>{
-      document.getElementById('lightbox').classList.add('show');
-      document.getElementById('lightboxImg').src = img.src;
+    img.addEventListener('click',()=>{
+      const lb=document.getElementById('lightbox');
+      const lbImg=document.getElementById('lightboxImg');
+      lb.classList.add('show');
+      lbImg.src=img.src;
     });
   });
 
 });
 
-document.getElementById('lightbox').onclick = function(){
+// ---- لايت بوكس ----
+document.getElementById('lightbox').onclick=function(){
   this.classList.remove('show');
 };
+
+document.addEventListener('keydown',e=>{
+  if(e.key==="Escape"){
+    document.getElementById('lightbox').classList.remove('show');
+  }
+});
+
+// ---- واتساب مع جمع بيانات العميل ----
+
+document.querySelectorAll('.buy-btn').forEach(btn => {
+
+  btn.addEventListener('click', function(e){
+
+    e.preventDefault();
+
+    const name = prompt("من فضلك اكتب اسمك:");
+    if(!name) return;
+
+    const phone = prompt("من فضلك اكتب رقم الهاتف:");
+    if(!phone) return;
+
+    const address = prompt("من فضلك اكتب عنوانك:");
+    if(!address) return;
+
+    const size = prompt("من فضلك اختر المقاس:");
+    if(!size) return;
+
+    const color = prompt("من فضلك اختر اللون / الموديل:");
+    if(!color) return;
+
+    const card = this.closest('.product-card');
+    if(!card) return;
+
+    const activeImg = card.querySelector('.slider-image.active');
+    if(!activeImg) return;
+
+    const imgUrl = new URL(activeImg.src, window.location.href).href;
+
+    const title = card.querySelector('h3')?.innerText || '';
+
+    const text =
+`اريد طلب"${title}"
+الاسم: ${name}
+رقم الهاتف: ${phone}
+العنوان: ${address}
+المقاس: ${size}
+اللون / الموديل: ${color}
+الصورة:
+${imgUrl}`;
+
+    // ⬅️ يفتح واتساب فورًا بعد إدخال آخر بيانات
+    window.location.href =
+      "https://wa.me/201150811175?text=" + encodeURIComponent(text);
+
+  });
+
+});
 
 </script>
 
 </body>
 </html>
-
