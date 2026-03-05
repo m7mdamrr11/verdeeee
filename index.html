@@ -13,11 +13,652 @@
 
   <link rel="canonical" href="https://vedre.com/">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- <link rel="stylesheet" href="style.css"> -->
 
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+<style>
+  /* ================= RESET ================= */
 
+/* Reset */
+/* Reset + Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Tajawal', Arial, sans-serif; /* الخط العربي النهائي */
+}
+
+/* العناوين */
+.hero-content h1,
+.section-title,
+.product-info h3,
+.footer-contact h2 {
+  font-family: 'Tajawal', Arial, sans-serif;
+  font-weight: 700;
+}
+
+/* النصوص */
+.hero-content p,
+.product-info p,
+.footer-contact p,
+.cat-btn,
+.buy-btn {
+  font-family: 'Tajawal', Arial, sans-serif;
+  font-weight: 400;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:70px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom:1px solid #eee;
+  z-index:1000;
+}
+
+.brand{
+  font-size:26px;
+  font-weight:bold;
+  color:#1DB954;
+  letter-spacing:1px;
+}
+
+/* ================= HERO ================= */
+
+
+.hero{
+  min-height: 70vh;
+  background: linear-gradient(120deg, #1DB954, #0F7A3D); /* لون متدرج */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+  color:#fff;
+}
+
+.hero-content h1{
+  font-size:36px;
+  margin-bottom:15px;
+  font-weight:700;
+}
+
+.hero-content p{
+  font-size:18px;
+  margin-bottom:25px;
+}
+
+.hero-btn{
+  background:#fff;
+  color:#1DB954;
+  padding:14px 32px;
+  border-radius:30px;
+  font-size:16px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.hero-btn:hover{
+  background:#f0f0f0;
+  transform:translateY(-3px) scale(1.03);
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+
+/* ================= PRODUCTS ================= */
+
+.products{
+  padding:60px 20px;
+  background:#fff;
+}
+
+.product-card{
+  position:relative;
+}
+
+/* NEW badge */
+
+.badge-new{
+  position:absolute;
+  top:8px;
+  left:8px;
+  background:#ff3b3b;
+  color:#fff;
+  font-size:11px;
+  font-weight:bold;
+  padding:4px 8px;
+  border-radius:6px;
+  z-index:5;
+  letter-spacing:1px;
+  box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+
+/* موبايل */
+
+@media(max-width:600px){
+  .badge-new{
+    font-size:10px;
+    padding:3px 7px;
+  }
+}
+
+.section-title{
+  text-align:center;
+  font-size:28px;
+  color:#0F7A3D;
+  margin-bottom:25px;
+  /* border-bottom: #1DB954 2px solid; */
+}
+
+/* categories */
+
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding:10px 0 25px;
+  margin-bottom:20px;
+}
+
+.cat-btn{
+  padding:8px 18px;
+  border-radius:20px;
+  border:1px solid #1DB954;
+  background:#fff;
+  color:#1DB954;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:.3s;
+  font-size:14px;
+  text-decoration:none;
+}
+
+.cat-btn:hover{
+  background:#1DB954;
+  color:#fff;
+}
+
+/* grid */
+
+.products-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit , minmax(160px , 1fr));
+  gap:18px;
+}
+
+/* card */
+
+.product-card{
+  width:100%;
+  max-width:100%;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+  overflow:hidden;
+  text-align:center;
+}
+
+/* slider inside product */
+
+.product-slider{
+  position:relative;
+  width:100%;
+  height:190px;
+  overflow:hidden;
+}
+
+.product-slider .slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition:opacity .5s ease;
+}
+
+.product-slider .slide.active{
+  opacity:1;
+}
+
+.product-slider img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px 12px 0 0;
+}
+
+/* info */
+
+.product-info{
+  padding:10px 12px 14px;
+}
+
+.product-info h3{
+  font-size:15px;
+  margin-bottom:8px;
+}
+
+.buy-btn{
+  background:#1DB954;
+  color:#fff;
+  padding:7px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:14px;
+  transition:.3s;
+  display:inline-block;
+}
+
+.buy-btn:hover{
+  background:#0F7A3D;
+  transform:translateY(-2px);
+}
+
+/* ================= WHATSAPP FLOAT ================= */
+
+.whatsapp-container{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  z-index:1000;
+  flex-direction:row-reverse;
+}
+
+.whatsapp-btn{
+  width:42px;
+  height:42px;
+  background:#1DB954;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 5px 15px rgba(0,0,0,.3);
+  transition:.3s;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.whatsapp-btn img{
+  width:24px;
+  height:24px;
+}
+
+.whatsapp-btn:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 10px 20px rgba(29,185,84,.4);
+}
+
+.whatsapp-popup{
+  background:#fff;
+  color:#0F7A3D;
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:13px;
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+  opacity:0;
+  transform:translateX(12px);
+  transition:.4s;
+  white-space:nowrap;
+  pointer-events:none;
+}
+
+.whatsapp-container.show-popup .whatsapp-popup,
+.whatsapp-container:hover .whatsapp-popup{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.delivery-payment{
+  padding:60px 20px;
+  background:#f5f5f5;
+  text-align:center;
+}
+
+.delivery-payment .section-title{
+  font-size:28px;
+  color:#0F7A3D;
+  margin-bottom:40px;
+}
+
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.delivery-card{
+  background:#fff;
+  padding:25px 15px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.05);
+  transition:.3s;
+}
+
+.delivery-card i{
+  font-size:50px;
+  color:#1DB954;
+  margin-bottom:15px;
+}
+
+.delivery-card h3{
+  font-size:18px;
+  color:#0F7A3D;
+  margin-bottom:10px;
+}
+
+.delivery-card p{
+  font-size:14px;
+  color:#555;
+}
+
+.delivery-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.delivery-payment{
+  padding:60px 20px;
+  background:#f5f5f5;
+  text-align:center;
+}
+
+.delivery-payment .section-title{
+  font-size:28px;
+  color:#0F7A3D;
+  margin-bottom:40px;
+}
+
+.delivery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.delivery-card{
+  background:#fff;
+  padding:25px 15px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.05);
+  transition:.3s;
+}
+
+.delivery-card i{
+  font-size:50px;
+  color:#1DB954;
+  margin-bottom:15px;
+}
+
+.delivery-card h3{
+  font-size:18px;
+  color:#0F7A3D;
+  margin-bottom:10px;
+}
+
+.delivery-card p{
+  font-size:14px;
+  color:#555;
+}
+
+.delivery-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+
+.reviews{
+  padding:60px 20px;
+  background:#fff;
+  text-align:center;
+}
+
+.reviews .section-title{
+  font-size:28px;
+  color:#0F7A3D;
+  margin-bottom:40px;
+}
+
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.review-card{
+  background:#f5f5f5;
+  padding:25px 20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,.05);
+  transition:.3s;
+}
+
+.review-card p{
+  font-size:14px;
+  color:#555;
+  margin-bottom:15px;
+  line-height:1.6;
+}
+
+.reviewer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-weight:600;
+  color:#0F7A3D;
+}
+
+.reviewer i{
+  font-size:20px;
+  color:#1DB954;
+}
+
+.review-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+/* ================= FOOTER ================= */
+
+/* ================= FOOTER SECTION ================= */
+
+.footer {
+  background-color: #0F7A3D; /* أخضر داكن */
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  text-align: center;
+}
+
+/* Contact Info */
+.footer-contact h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.footer-contact p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer-contact a {
+  color: #1DB954; /* أخضر Vedre */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-contact a:hover {
+  color: #fff; /* أبيض عند Hover */
+}
+
+/* Social Links */
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.social-link img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(1) saturate(1);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+  background: rgba(29, 185, 84, 0.2); /* أخضر فاتح خفيف */
+}
+
+.social-link:hover img {
+  filter: brightness(1.3) saturate(1.2);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 20px;
+  font-size: 13px;
+  color: #e0e0e0;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-contact h2 {
+    font-size: 20px;
+  }
+
+  .footer-contact p {
+    font-size: 13px;
+  }
+
+  .social-link {
+    width: 38px;
+    height: 38px;
+  }
+
+  .social-link img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:600px){
+
+  body{
+    padding-top:60px;
+  }
+
+  .navbar{
+    height:60px;
+  }
+
+  .brand{
+    font-size:26px;
+  }
+
+  .hero{
+    min-height: 70vh;
+    padding:30px 15px;
+  }
+
+  .hero-content h1{
+    font-size:28px;
+  }
+
+  .hero-content p{
+    font-size:18px;
+  }
+
+  .sale-slider{
+    height:400px;
+  }
+
+}
+
+@media(max-width:380px){
+
+  .section-title{
+    font-size:22px;
+  }
+
+  .product-slider{
+    height:300px;
+  }
+
+  .whatsapp-container{
+    bottom:14px;
+    right:14px;
+  }
+
+}
+
+@media(min-width:992px){
+
+  .products-grid{
+    max-width:1200px;
+    margin:auto;
+  }
+
+  .categories{
+    justify-content:center;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
@@ -32,36 +673,20 @@
 <main>
 
 <!-- Hero Section -->
+<!-- <section class="hero" aria-label="قسم العنوان الرئيسي">
+  <div class="hero-content">
+    <h1>اكتشف أناقة Vedre</h1>
+    <p>أفضل أحذية وشنط للأطفال وللحريمي، مع جودة وراحة لا مثيل لها – اطلب الآن بسهولة</p>
+    <a href="#products" class="hero-btn">شوف منتجاتنا</a>
+  </div>
+</section> -->
+
 <section class="hero" aria-label="قسم العنوان الرئيسي">
   <div class="hero-content">
     <h1>اكتشف أناقة Vedre</h1>
     <p>أفضل أحذية وشنط للأطفال وللحريمي، مع جودة وراحة لا مثيل لها – اطلب الآن بسهولة</p>
     <a href="#products" class="hero-btn">شوف منتجاتنا</a>
   </div>
-</section>
-
-
-<!-- Sale Section -->
-<section class="sale-section" aria-label="عروض وخصومات">
-
-  <div class="sale-ticker top">
-    <div class="ticker-track">
-      SALE 50% • SALE 50% • SALE 50% • SALE 50% • SALE 50%
-    </div>
-  </div>
-
-  <div class="sale-slider">
-    <img src="1.jpeg" class="sale-slide active" alt="عرض خصم 50% على أحذية Vedre">
-    <img src="2.jpeg" class="sale-slide" alt="تخفيضات أحذية Vedre">
-    <img src="hero3.jpeg" class="sale-slide" alt="عروض متجر Vedre للأحذية">
-  </div>
-
-  <div class="sale-ticker bottom">
-    <div class="ticker-track">
-      SALE 50% • SALE 50% • SALE 50% • SALE 50% • SALE 50%
-    </div>
-  </div>
-
 </section>
 
 <!-- Products Section -->
@@ -177,6 +802,67 @@
 </section>
 
 </main>
+
+
+
+<!-- Delivery & Payment Section -->
+<section class="delivery-payment" aria-label="الدفع والتوصيل">
+  <div class="section-title">طرق الدفع والتوصيل</div>
+
+  <div class="delivery-grid">
+    <div class="delivery-card">
+      <i class="fas fa-money-bill-wave"></i>
+      <h3>الدفع عند الاستلام</h3>
+      <p>ادفع نقدًا عند وصول الطلب إلى باب منزلك.</p>
+    </div>
+
+    <div class="delivery-card">
+      <i class="fas fa-credit-card"></i>
+      <h3>الدفع بالبطاقات</h3>
+      <p>ادفع بأمان عبر الفيزا أو الماستركارد.</p>
+    </div>
+
+    <div class="delivery-card">
+      <i class="fab fa-whatsapp"></i>
+      <h3>الطلب عبر واتساب</h3>
+      <p>تواصل معنا وأرسل طلبك مباشرة عبر واتساب.</p>
+    </div>
+
+    <div class="delivery-card">
+      <i class="fas fa-truck"></i>
+      <h3>توصيل سريع</h3>
+      <p>نوصل طلبك خلال 24-48 ساعة حسب المنطقة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews" aria-label="تقييمات العملاء">
+  <div class="section-title">آراء عملائنا</div>
+
+  <div class="reviews-grid">
+    <div class="review-card">
+      <p>"أحذية رائعة! الجودة ممتازة والتوصيل سريع جدًا."</p>
+      <div class="reviewer">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <p>"خدمة ممتازة والمنتجات وصلت في حالة ممتازة."</p>
+      <div class="reviewer">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <p>"المنتجات حلوة جدًا ومرتبة بعناية. أنصح الجميع بالشراء."</p>
+      <div class="reviewer">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WhatsApp Floating Button -->
 <div class="whatsapp-container" aria-label="زر واتساب">

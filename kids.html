@@ -4,264 +4,40 @@
 <meta charset="UTF-8">
 <title>Vedre | أحذية أطفال</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Tajawal',Arial,sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',Arial,sans-serif;}
 body{background:#fff;color:#222}
-
-/* header */
-.header{
-  position:sticky;
-  top:0;
-  background:#1DB954;
-  padding:14px;
-  text-align:center;
-  /* border:5px solid #0F7A3D; */
-  z-index:1000;
-}
-
-.brand-link{
-  color:#fff;
-  font-size:22px;
-  font-weight:bold;
-  text-decoration:none;
-}
-
-/* page */
-.page-title{
-  text-align:center;
-  margin:18px 0 10px;
-  color:#0F7A3D;
-  font-size:20px;
-}
-
-.page-products{padding:10px 14px 40px}
-
-/* grid */
-.products-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-@media(min-width:768px){
-  .products-grid{grid-template-columns:repeat(4,1fr)}
-}
-
-/* card */
-.product-card{
-  background:#fff;
-  border-radius:12px;
-  overflow:hidden;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
-}
-
-/* slider */
-.product-slider{
-  position:relative;
-  width:100%;
-  aspect-ratio:1/1;
-  overflow:hidden;
-}
-
-.slider-image{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:none;
-  cursor:pointer;
-}
-
-.slider-image.active{display:block}
-
-/* arrows */
-.arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:32px;
-  height:32px;
-  border:none;
-  border-radius:50%;
-  background:rgba(0,0,0,.45);
-  color:#fff;
-  font-size:18px;
-  cursor:pointer;
-  z-index:5;
-}
-
+.header{position:sticky;top:0;background:#1DB954;padding:14px;text-align:center;z-index:1000;}
+.brand-link{color:#fff;font-size:22px;font-weight:bold;text-decoration:none;}
+.page-title{text-align:center;margin:18px 0 10px;color:#0F7A3D;font-size:20px;}
+.page-products{padding:10px 14px 40px;}
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+@media(min-width:768px){.products-grid{grid-template-columns:repeat(4,1fr)}}
+.product-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.08);}
+.product-slider{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;}
+.slider-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;cursor:pointer;}
+.slider-image.active{display:block;}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border:none;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:18px;cursor:pointer;z-index:5;}
 .arrow.left{right:8px}
 .arrow.right{left:8px}
-
-/* info */
-.product-info{
-  padding:10px;
-  text-align:center;
-}
-
-.product-info h3{
-  font-size:14px;
-  margin-bottom:6px;
-}
-
-.product-info p{
-  font-size:13px;
-  margin-bottom:8px;
-}
-
-.buy-btn{
-  display:inline-block;
-  background:#1DB954;
-  color:#fff;
-  text-decoration:none;
-  padding:7px 12px;
-  border-radius:8px;
-  font-size:13px;
-}
-
-/* dots */
-.slider-dots{
-  position:absolute;
-  bottom:8px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:6px;
-  z-index:6;
-}
-
-.slider-dots span{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:rgba(255,255,255,.6);
-  cursor:pointer;
-  transition:.2s;
-}
-
-.slider-dots span.active{
-  background:#1DB954;
-  transform:scale(1.2);
-}
-
-/* lightbox */
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:9999;
-}
-
-.lightbox.show{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:10px;
-}
-
-.order-modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:10000;
-}
-
-.order-modal.show{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.order-box{
-  background:#fff;
-  width:90%;
-  max-width:360px;
-  padding:16px;
-  border-radius:12px;
-}
-
-.order-box h3{
-  text-align:center;
-  margin-bottom:10px;
-  font-size:16px;
-}
-
-.order-box input{
-  width:100%;
-  margin-bottom:8px;
-  padding:8px 10px;
-  border:1px solid #ddd;
-  border-radius:8px;
-  font-size:13px;
-}
-
-.order-actions{
-  display:flex;
-  gap:8px;
-  margin-top:6px;
-}
-
-.order-actions button{
-  flex:1;
-  padding:8px;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:13px;
-}
-
-.order-actions button[type="submit"]{
-  background:#1DB954;
-  color:#fff;
-}
-
-#closeOrder{
-  background:#eee;
-}
-
-.size-btn,
-.color-btn{
-  padding:4px 8px;
-  margin:2px;
-  border:1px solid #1DB954;
-  background:#fff;
-  color:#1DB954;
-  border-radius:6px;
-  font-size:12px;
-  cursor:pointer;
-}
-
-.size-btn.active,
-.color-btn.active{
-  background:#1DB954;
-  color:#fff;
-}
-
+.product-info{padding:10px;text-align:center;}
+.product-info h3{font-size:14px;margin-bottom:6px;}
+.buy-btn{display:inline-block;background:#1DB954;color:#fff;text-decoration:none;padding:7px 12px;border-radius:8px;font-size:13px;}
+.size-select,.color-select{width:100%;padding:6px 10px;margin:4px 0;border:1px solid #1DB954;border-radius:6px;font-size:13px;background:#fff;color:#222;}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;z-index:9999;}
+.lightbox.show{opacity:1;pointer-events:auto;}
+.lightbox img{max-width:90%;max-height:90%;border-radius:10px;}
+.order-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;z-index:10000;}
+.order-modal.show{opacity:1;pointer-events:auto;}
+.order-box{background:#fff;width:90%;max-width:360px;padding:16px;border-radius:12px;}
+.order-box h3{text-align:center;margin-bottom:10px;font-size:16px;}
+.order-box input{width:100%;margin-bottom:8px;padding:8px 10px;border:1px solid #ddd;border-radius:8px;font-size:13px;}
+.order-actions{display:flex;gap:8px;margin-top:6px;}
+.order-actions button{flex:1;padding:8px;border:none;border-radius:8px;cursor:pointer;font-size:13px;}
+.order-actions button[type="submit"]{background:#1DB954;color:#fff;}
+#closeOrder{background:#eee;}
 </style>
 </head>
 <body>
@@ -275,298 +51,490 @@ body{background:#fff;color:#222}
 <main class="page-products">
 <section class="products-grid">
 
-<!-- product 1 -->
+<!-- المنتج 1 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids1-2.jpg" class="slider-image active" loading="lazy">
-<img src="kids1.jpg" class="slider-image" loading="lazy">
-<img src="kids1-3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>Nike اطفال</h3>
-<pre>مقاسات 31-36</pre>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids1-2.jpg" class="slider-image active" loading="lazy">
+    <img src="kids1.jpg" class="slider-image" loading="lazy">
+    <img src="kids1-3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Nike اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+      <option value="36">36</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="لبني">لبني</option>
+      <option value="بيج">بيج</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 2 -->
+<!-- المنتج 2 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids2.2.jpg" class="slider-image active" loading="lazy">
-<img src="kids2.jpg" class="slider-image" loading="lazy">
-<img src="kids2.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<p>مقاسات 23-29</p>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids2.jpg" class="slider-image active" loading="lazy">
+    <img src="kids2.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids2.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+      <option value="36">36</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="ابيض/نبيتي">ابيض/نبيتي</option>
+      <option value="ابيض/كحلي">ابيض/كحلي</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 3 -->
+<!-- المنتج 3 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids3.jpg" class="slider-image active" loading="lazy">
-<img src="kids3.1.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids3.jpg" class="slider-image active" loading="lazy">
+    <img src="kids3.1.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="رمادي">رمادي</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 4 -->
+<!-- المنتج 4 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids4.2.jpg" class="slider-image active" loading="lazy">
-<img src="kids4.jpg" class="slider-image" loading="lazy">
-<img src="kids4.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids4.jpg" class="slider-image active" loading="lazy">
+    <img src="kids4.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids4.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+      <option value="36">36</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أبيض">أبيض</option>
+      <option value="كحلي">كحلي</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 5 -->
+<!-- المنتج 5 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids5.jpg" class="slider-image active" loading="lazy">
-<img src="kids5.2.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids5.jpg" class="slider-image active" loading="lazy">
+    <img src="kids5.2.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="وردي">وردي</option>
+      <option value="بنفسجي">بنفسجي</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 6 -->
+<!-- المنتج 6 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids6.jpg" class="slider-image active" loading="lazy">
-<img src="kids6.2.jpg" class="slider-image" loading="lazy">
-<img src="kids6.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>ميلانو اديدس
-</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال ميلانو اديدس%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids6.jpg" class="slider-image active" loading="lazy">
+    <img src="kids6.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids6.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>ميلانو اديدس</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أحمر">أحمر</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 7 -->
+<!-- المنتج 7 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids7.jpg" class="slider-image active" loading="lazy">
-<img src="kids7.2.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids7.jpg" class="slider-image active" loading="lazy">
+    <img src="kids7.2.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أزرق">أزرق</option>
+      <option value="أبيض">أبيض</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 8 -->
+<!-- المنتج 8 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids8.2.jpg" class="slider-image active" loading="lazy">
-<img src="kids8.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids8.jpg" class="slider-image active" loading="lazy">
+    <img src="kids8.2.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 9 -->
+<!-- المنتج 9 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids9.jpg" class="slider-image active" loading="lazy">
-<img src="kids9.2.jpg" class="slider-image" loading="lazy">
-<img src="kids9.3.jpg" class="slider-image" loading="lazy">
-<img src="kids9.4.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids9.jpg" class="slider-image active" loading="lazy">
+    <img src="kids9.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids9.3.jpg" class="slider-image" loading="lazy">
+    <img src="kids9.4.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+      <option value="35">35</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أبيض">أبيض</option>
+      <option value="كحلي">كحلي</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 10 -->
+<!-- المنتج 10 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids10.2.jpg" class="slider-image active" loading="lazy">
-<img src="kids10.jpg" class="slider-image" loading="lazy">
-<img src="kids10.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids10.jpg" class="slider-image active" loading="lazy">
+    <img src="kids10.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids10.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="رمادي">رمادي</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 11 -->
+<!-- المنتج 11 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids11.jpg" class="slider-image active" loading="lazy">
-<img src="kids11.2.jpg" class="slider-image" loading="lazy">
-<img src="kids11.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids11.jpg" class="slider-image active" loading="lazy">
+    <img src="kids11.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids11.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="رمادي">رمادي</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 12 -->
+<!-- المنتج 12 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids12.jpg" class="slider-image active" loading="lazy">
-<img src="kids12.2.jpg" class="slider-image" loading="lazy">
-<img src="kids12.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids12.jpg" class="slider-image active" loading="lazy">
+    <img src="kids12.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids12.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أحمر">أحمر</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 13 -->
+<!-- المنتج 13 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids13.jpg" class="slider-image active" loading="lazy">
-<img src="kids13.2.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids13.jpg" class="slider-image active" loading="lazy">
+    <img src="kids13.2.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أحمر">أحمر</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 14 -->
+<!-- المنتج 14 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids14.jpg" class="slider-image active" loading="lazy">
-<img src="kids14.3.jpg" class="slider-image" loading="lazy">
-<img src="kids14.2.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids14.jpg" class="slider-image active" loading="lazy">
+    <img src="kids14.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids14.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أحمر">أحمر</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 15 -->
+<!-- المنتج 15 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids15.jpg" class="slider-image active" loading="lazy">
-<img src="kids15.2.jpg" class="slider-image" loading="lazy">
-<img src="kids15.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids15.jpg" class="slider-image active" loading="lazy">
+    <img src="kids15.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids15.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أحمر">أحمر</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 16 -->
+<!-- المنتج 16 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids16.jpg" class="slider-image active" loading="lazy">
-<img src="kids16.2.jpg" class="slider-image" loading="lazy">
-<img src="kids16.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids16.jpg" class="slider-image active" loading="lazy">
+    <img src="kids16.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids16.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أحمر">أحمر</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-<!-- product 18 -->
+<!-- المنتج 17 -->
 <article class="product-card">
-<div class="product-slider">
-<button class="arrow left">&#10095;</button>
-<img src="kids18.jpg" class="slider-image active" loading="lazy">
-<img src="kids18.2.jpg" class="slider-image" loading="lazy">
-<img src="kids18.3.jpg" class="slider-image" loading="lazy">
-<button class="arrow right">&#10094;</button>
-</div>
-<div class="product-info">
-<h3>حذاء أطفال Vedre</h3>
-<a class="buy-btn" target="_blank"
-href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre">اطلب الان</a>
-</div>
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids17.jpg" class="slider-image active" loading="lazy">
+    <img src="kids17.2.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+      <option value="34">34</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أبيض">أبيض</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
 </article>
 
-</section>
-</main>
-
-<div class="lightbox" id="lightbox">
-  <img id="lightboxImg">
-</div>
-
+<!-- المنتج 18 -->
+<article class="product-card">
+  <div class="product-slider">
+    <button class="arrow left">&#10095;</button>
+    <img src="kids18.jpg" class="slider-image active" loading="lazy">
+    <img src="kids18.2.jpg" class="slider-image" loading="lazy">
+    <img src="kids18.3.jpg" class="slider-image" loading="lazy">
+    <button class="arrow right">&#10094;</button>
+  </div>
+  <div class="product-info">
+    <h3>Vedre اطفال</h3>
+    <select class="size-select">
+      <option value="">اختر المقاس</option>
+      <option value="31">31</option>
+      <option value="32">32</option>
+      <option value="33">33</option>
+    </select>
+    <select class="color-select">
+      <option value="">اختر اللون / الموديل</option>
+      <option value="أسود">أسود</option>
+      <option value="أحمر">أحمر</option>
+    </select>
+    <a class="buy-btn" target="_blank" href="#">اطلب الان</a>
+  </div>
+</article>
 
 <!-- Order Modal -->
 <div class="order-modal" id="orderModal">
   <div class="order-box">
     <h3 id="orderTitle">تأكيد الطلب</h3>
-
     <form id="orderForm">
       <input type="text" id="custName" placeholder="الاسم" required>
       <input type="tel" id="custPhone" placeholder="رقم التليفون" required>
       <input type="text" id="custAddress" placeholder="العنوان" required>
-
       <input type="text" id="custSize" placeholder="المقاس" required>
-      <input type="text" id="custColor" placeholder="اللون / الموديل" required>
-
+      <input type="text" id="custColor" placeholder="اللون" required>
       <div class="order-actions">
         <button type="submit">تاكيد الطلب</button>
         <button type="button" id="closeOrder">إلغاء</button>
@@ -576,240 +544,64 @@ href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20ح�
 </div>
 
 <script>
-/* ================== slider + dots + lightbox ================== */
-
 document.querySelectorAll('.product-card').forEach(card=>{
-
   const images = card.querySelectorAll('.slider-image');
-  const next  = card.querySelector('.arrow.right');
-  const prev  = card.querySelector('.arrow.left');
-  const slider = card.querySelector('.product-slider');
-
-  let i = 0;
-
+  const next = card.querySelector('.arrow.right');
+  const prev = card.querySelector('.arrow.left');
+  let i=0;
   const dotsWrap = document.createElement('div');
-  dotsWrap.className = 'slider-dots';
-  const dots = [];
-
+  dotsWrap.className='slider-dots';
+  const dots=[];
   images.forEach((img,index)=>{
-    const dot = document.createElement('span');
+    const dot=document.createElement('span');
     if(index===0) dot.classList.add('active');
-
-    dot.addEventListener('click',e=>{
-      e.stopPropagation();
-      i=index;
-      show(i);
-    });
-
-    dotsWrap.appendChild(dot);
-    dots.push(dot);
+    dot.addEventListener('click',()=>{i=index; show(i);});
+    dotsWrap.appendChild(dot); dots.push(dot);
   });
-
-  slider.appendChild(dotsWrap);
-
-  function show(n){
-    images.forEach(img=>img.classList.remove('active'));
-    dots.forEach(d=>d.classList.remove('active'));
-    images[n].classList.add('active');
-    dots[n].classList.add('active');
-  }
-
-  next.addEventListener('click',e=>{
-    e.stopPropagation();
-    i=(i+1)%images.length;
-    show(i);
-  });
-
-  prev.addEventListener('click',e=>{
-    e.stopPropagation();
-    i=(i-1+images.length)%images.length;
-    show(i);
-  });
-
-  images.forEach(img=>{
-    img.addEventListener('click',()=>{
-      const lb=document.getElementById('lightbox');
-      const lbImg=document.getElementById('lightboxImg');
-      lb.classList.add('show');
-      lbImg.src=img.src;
-    });
-  });
-
+  card.querySelector('.product-slider').appendChild(dotsWrap);
+  function show(n){ images.forEach(img=>img.classList.remove('active')); dots.forEach(d=>d.classList.remove('active')); images[n].classList.add('active'); dots[n].classList.add('active'); }
+  next.addEventListener('click',()=>{i=(i+1)%images.length; show(i);});
+  prev.addEventListener('click',()=>{i=(i-1+images.length)%images.length; show(i);});
+  images.forEach(img=>{ img.addEventListener('click',()=>{ const lb=document.getElementById('lightbox'); const lbImg=document.getElementById('lightboxImg'); lb.classList.add('show'); lbImg.src=img.src; }); });
 });
+document.getElementById('lightbox').onclick=function(){this.classList.remove('show');};
+document.addEventListener('keydown',e=>{if(e.key==="Escape") document.getElementById('lightbox').classList.remove('show');});
 
-document.getElementById('lightbox').onclick=function(){
-  this.classList.remove('show');
-};
-
-document.addEventListener('keydown',e=>{
-  if(e.key==="Escape"){
-    document.getElementById('lightbox').classList.remove('show');
-  }
-});
-
-
-/* ================== per product sizes & colors ================== */
-
-const productsOptions = [
-  { sizes:["31","32","33","34","35","36"], colors:["أسود","لبني","ييج"] },
-  { sizes:["31","32","33","34","35","36"],     colors:["أسود","ابيض/نبيتي","ابيض/كحلي"] },
-  { sizes:["33","34","35"],     colors:["أسود","رمادي"] },
-  { sizes:["32","33","34","35","36"], colors:["أبيض","كحلي"] },
-  { sizes:["30","31"],         colors:["وردي","بنفسجي"] },
-  { sizes:["31","32","33"],     colors:["أسود","أحمر"] },
-  { sizes:["32","33","34"],     colors:["أزرق","أبيض"] },
-  { sizes:["30","31","32","33"],colors:["أسود"] },
-  { sizes:["33","34","35"],     colors:["أبيض","كحلي"] },
-  { sizes:["31","32","33","34"],colors:["أسود","رمادي"] },
-  // زوّد على نفس النمط بعدد منتجاتك
-];
-
-document.querySelectorAll('.product-card').forEach((card,index)=>{
-
-  const info = card.querySelector('.product-info');
-  const buyBtn = info.querySelector('.buy-btn');
-
-  const config = productsOptions[index];
-
-  if(!config) return;
-
-  /* ===== المقاسات ===== */
-
-  const sizeWrap = document.createElement("div");
-  sizeWrap.className = "sizes-wrap";
-
-  config.sizes.forEach(size=>{
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "size-btn";
-    btn.textContent = size;
-
-    btn.onclick = ()=>{
-      sizeWrap.querySelectorAll(".size-btn")
-        .forEach(b=>b.classList.remove("active"));
-      btn.classList.add("active");
-      card.dataset.size = size;
-    };
-
-    sizeWrap.appendChild(btn);
-  });
-
-  /* ===== الألوان ===== */
-
-  const colorWrap = document.createElement("div");
-  colorWrap.className = "colors-wrap";
-
-  config.colors.forEach(color=>{
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "color-btn";
-    btn.textContent = color;
-
-    btn.onclick = ()=>{
-      colorWrap.querySelectorAll(".color-btn")
-        .forEach(b=>b.classList.remove("active"));
-      btn.classList.add("active");
-      card.dataset.color = color;
-    };
-
-    colorWrap.appendChild(btn);
-  });
-
-  info.insertBefore(sizeWrap, buyBtn);
-  info.insertBefore(colorWrap, buyBtn);
-
-});
-
-
-/* ===== ربط الاختيارات بالفورم المنبثق ===== */
+let selectedCard=null;
+const modal=document.getElementById("orderModal");
+const form=document.getElementById("orderForm");
+const closeBtn=document.getElementById("closeOrder");
+const orderTitle=document.getElementById("orderTitle");
 
 document.querySelectorAll(".buy-btn").forEach(btn=>{
-
-  btn.addEventListener("click",function(){
-
-    const card = this.closest(".product-card");
-
-    const size  = card.dataset.size  || "";
-    const color = card.dataset.color || "";
-
-    const sizeInput  = document.getElementById("custSize");
-    const colorInput = document.getElementById("custColor");
-
-    if(sizeInput)  sizeInput.value  = size;
-    if(colorInput) colorInput.value = color;
-
-  });
-
-});
-
-
-/* ================== order form + whatsapp ================== */
-
-let selectedCard = null;
-
-const modal = document.getElementById("orderModal");
-const form  = document.getElementById("orderForm");
-const closeBtn = document.getElementById("closeOrder");
-const orderTitle = document.getElementById("orderTitle");
-
-document.querySelectorAll(".buy-btn").forEach(btn=>{
-
   btn.addEventListener("click",function(e){
-
     e.preventDefault();
-
-    selectedCard = this.closest(".product-card");
-
-    const title =
-      selectedCard.querySelector("h3")?.innerText || "";
-
-    orderTitle.innerText = title;
-
+    selectedCard=this.closest(".product-card");
+    const size = selectedCard.querySelector(".size-select").value;
+    const color = selectedCard.querySelector(".color-select").value;
+    document.getElementById("custSize").value=size;
+    document.getElementById("custColor").value=color;
+    orderTitle.innerText=selectedCard.querySelector("h3").innerText;
     modal.classList.add("show");
-
   });
-
 });
 
-closeBtn.onclick = ()=>{
-  modal.classList.remove("show");
-  form.reset();
-};
-
-modal.addEventListener("click",e=>{
-  if(e.target === modal){
-    modal.classList.remove("show");
-    form.reset();
-  }
-});
-
+closeBtn.onclick=()=>{modal.classList.remove("show"); form.reset();};
+modal.addEventListener("click",e=>{if(e.target===modal){modal.classList.remove("show"); form.reset();}});
 
 form.addEventListener("submit",function(e){
-
-  e.preventDefault();
-
-  if(!selectedCard) return;
-
-  const name    = document.getElementById("custName").value.trim();
-  const phone   = document.getElementById("custPhone").value.trim();
-  const address = document.getElementById("custAddress").value.trim();
-  const size    = document.getElementById("custSize").value.trim();
-  const color   = document.getElementById("custColor").value.trim();
-
-  if(!name || !phone || !address || !size || !color) return;
-
-  const activeImg =
-    selectedCard.querySelector(".slider-image.active");
-
+  e.preventDefault(); if(!selectedCard) return;
+  const name=document.getElementById("custName").value.trim();
+  const phone=document.getElementById("custPhone").value.trim();
+  const address=document.getElementById("custAddress").value.trim();
+  const size=document.getElementById("custSize").value.trim();
+  const color=document.getElementById("custColor").value.trim();
+  if(!name||!phone||!address||!size||!color) return;
+  const activeImg=selectedCard.querySelector(".slider-image.active");
   if(!activeImg) return;
-
-  const imgUrl = new URL(activeImg.src, window.location.href).href;
-
-  const title =
-    selectedCard.querySelector("h3")?.innerText || "";
-
-  const text =
-`اريد طلب"${title}"
+  const imgUrl=new URL(activeImg.src,window.location.href).href;
+  const title=selectedCard.querySelector("h3").innerText;
+  const text=`اريد طلب "${title}"
 الاسم: ${name}
 رقم الهاتف: ${phone}
 العنوان: ${address}
@@ -817,14 +609,8 @@ form.addEventListener("submit",function(e){
 اللون / الموديل: ${color}
 الصورة:
 ${imgUrl}`;
-
-  window.location.href =
-    "https://wa.me/201150811175?text=" +
-    encodeURIComponent(text);
-
+  window.location.href="https://wa.me/201150811175?text="+encodeURIComponent(text);
 });
 </script>
-
-
 </body>
 </html>
