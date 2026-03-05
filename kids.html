@@ -26,9 +26,33 @@ body{background:#fff;color:#222}
 .product-info h3{font-size:14px;margin-bottom:6px;}
 .buy-btn{display:inline-block;background:#1DB954;color:#fff;text-decoration:none;padding:7px 12px;border-radius:8px;font-size:13px;}
 .size-select,.color-select{width:100%;padding:6px 10px;margin:4px 0;border:1px solid #1DB954;border-radius:6px;font-size:13px;background:#fff;color:#222;}
-.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;z-index:9999;}
-.lightbox.show{opacity:1;pointer-events:auto;}
-.lightbox img{max-width:90%;max-height:90%;border-radius:10px;}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+  z-index: 9999;
+}
+.lightbox.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  cursor: zoom-out;
+}
+
+/* Order Modal */
 .order-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:.3s;z-index:10000;}
 .order-modal.show{opacity:1;pointer-events:auto;}
 .order-box{background:#fff;width:90%;max-width:360px;padding:16px;border-radius:12px;}
@@ -64,7 +88,6 @@ body{background:#fff;color:#222}
     <h3>Nike اطفال</h3>
     <select class="size-select">
       <option value="">اختر المقاس</option>
-      <option value="31">31</option>
       <option value="32">32</option>
       <option value="33">33</option>
       <option value="34">34</option>
@@ -72,7 +95,7 @@ body{background:#fff;color:#222}
       <option value="36">36</option>
     </select>
     <select class="color-select">
-      <option value="">اختر اللون / الموديل</option>
+      <option value="">اختر اللون</option>
       <option value="أسود">أسود</option>
       <option value="لبني">لبني</option>
       <option value="بيج">بيج</option>
@@ -94,7 +117,6 @@ body{background:#fff;color:#222}
     <h3>Vedre اطفال</h3>
     <select class="size-select">
       <option value="">اختر المقاس</option>
-      <option value="31">31</option>
       <option value="32">32</option>
       <option value="33">33</option>
       <option value="34">34</option>
@@ -102,7 +124,7 @@ body{background:#fff;color:#222}
       <option value="36">36</option>
     </select>
     <select class="color-select">
-      <option value="">اختر اللون / الموديل</option>
+      <option value="">اختر اللون</option>
       <option value="أسود">أسود</option>
       <option value="ابيض/نبيتي">ابيض/نبيتي</option>
       <option value="ابيض/كحلي">ابيض/كحلي</option>
@@ -525,6 +547,11 @@ body{background:#fff;color:#222}
   </div>
 </article>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="" alt="صورة المنتج">
+</div>
+
 <!-- Order Modal -->
 <div class="order-modal" id="orderModal">
   <div class="order-box">
@@ -544,53 +571,64 @@ body{background:#fff;color:#222}
 </div>
 
 <script>
+// --------- Slider ----------
 document.querySelectorAll('.product-card').forEach(card=>{
   const images = card.querySelectorAll('.slider-image');
   const next = card.querySelector('.arrow.right');
   const prev = card.querySelector('.arrow.left');
   let i=0;
-  const dotsWrap = document.createElement('div');
-  dotsWrap.className='slider-dots';
-  const dots=[];
-  images.forEach((img,index)=>{
-    const dot=document.createElement('span');
-    if(index===0) dot.classList.add('active');
-    dot.addEventListener('click',()=>{i=index; show(i);});
-    dotsWrap.appendChild(dot); dots.push(dot);
-  });
-  card.querySelector('.product-slider').appendChild(dotsWrap);
-  function show(n){ images.forEach(img=>img.classList.remove('active')); dots.forEach(d=>d.classList.remove('active')); images[n].classList.add('active'); dots[n].classList.add('active'); }
+  function show(n){
+    images.forEach(img=>img.classList.remove('active'));
+    images[n].classList.add('active');
+  }
   next.addEventListener('click',()=>{i=(i+1)%images.length; show(i);});
   prev.addEventListener('click',()=>{i=(i-1+images.length)%images.length; show(i);});
-  images.forEach(img=>{ img.addEventListener('click',()=>{ const lb=document.getElementById('lightbox'); const lbImg=document.getElementById('lightboxImg'); lb.classList.add('show'); lbImg.src=img.src; }); });
 });
-document.getElementById('lightbox').onclick=function(){this.classList.remove('show');};
-document.addEventListener('keydown',e=>{if(e.key==="Escape") document.getElementById('lightbox').classList.remove('show');});
 
-let selectedCard=null;
-const modal=document.getElementById("orderModal");
-const form=document.getElementById("orderForm");
-const closeBtn=document.getElementById("closeOrder");
-const orderTitle=document.getElementById("orderTitle");
+// --------- Lightbox ----------
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+
+document.querySelectorAll('.slider-image').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    lightboxImg.src = img.src;
+    lightbox.classList.add('show');
+  });
+});
+
+lightbox.addEventListener('click', e=>{
+  if(e.target===lightbox || e.target===lightboxImg){
+    lightbox.classList.remove('show');
+  }
+});
+document.addEventListener('keydown', e=>{if(e.key==="Escape") lightbox.classList.remove('show');});
+
+// --------- Order Modal ----------
+let selectedCard = null;
+const modal = document.getElementById("orderModal");
+const form = document.getElementById("orderForm");
+const closeBtn = document.getElementById("closeOrder");
+const orderTitle = document.getElementById("orderTitle");
 
 document.querySelectorAll(".buy-btn").forEach(btn=>{
-  btn.addEventListener("click",function(e){
+  btn.addEventListener("click", function(e){
     e.preventDefault();
-    selectedCard=this.closest(".product-card");
+    selectedCard = this.closest(".product-card");
     const size = selectedCard.querySelector(".size-select").value;
     const color = selectedCard.querySelector(".color-select").value;
-    document.getElementById("custSize").value=size;
-    document.getElementById("custColor").value=color;
-    orderTitle.innerText=selectedCard.querySelector("h3").innerText;
+    document.getElementById("custSize").value = size;
+    document.getElementById("custColor").value = color;
+    orderTitle.innerText = selectedCard.querySelector("h3").innerText;
     modal.classList.add("show");
   });
 });
 
-closeBtn.onclick=()=>{modal.classList.remove("show"); form.reset();};
-modal.addEventListener("click",e=>{if(e.target===modal){modal.classList.remove("show"); form.reset();}});
+closeBtn.onclick = ()=>{modal.classList.remove("show"); form.reset();};
+modal.addEventListener("click", e=>{if(e.target===modal){modal.classList.remove("show"); form.reset();}});
 
-form.addEventListener("submit",function(e){
-  e.preventDefault(); if(!selectedCard) return;
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  if(!selectedCard) return;
   const name=document.getElementById("custName").value.trim();
   const phone=document.getElementById("custPhone").value.trim();
   const address=document.getElementById("custAddress").value.trim();
