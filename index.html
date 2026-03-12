@@ -593,6 +593,69 @@
 }
 
 
+/* IMAGE VIEWER */
+
+.image-viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+opacity:0;
+visibility:hidden;
+transition:.3s;
+z-index:9999;
+}
+
+.image-viewer.show{
+opacity:1;
+visibility:visible;
+}
+
+#viewerImg{
+max-width:90%;
+max-height:80%;
+border-radius:10px;
+}
+
+.close-viewer{
+position:absolute;
+top:25px;
+right:35px;
+font-size:35px;
+color:#fff;
+cursor:pointer;
+}
+
+.viewer-nav{
+position:absolute;
+width:100%;
+display:flex;
+justify-content:space-between;
+top:50%;
+padding:0 20px;
+}
+
+.viewer-nav button{
+background:rgba(255,255,255,0.2);
+border:none;
+color:#fff;
+font-size:28px;
+padding:10px 18px;
+cursor:pointer;
+border-radius:50%;
+transition:.3s;
+}
+
+.viewer-nav button:hover{
+background:#1DB954;
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:600px){
@@ -735,100 +798,74 @@
   <div class="products-grid">
 
     <!-- Product -->
-    <article class="product-card">
-      <span class="badge-new">NEW</span>
-      <div class="product-slider">
-        <div class="slide"><img src="hero1.jpeg" alt="حذاء Vedre حريمي"></div>
-        <div class="slide"><img src="hero2.jpeg" alt="حذاء نسائي من Vedre"></div>
-        <div class="slide"><img src="hero3.jpeg" alt="حذاء Vedre أنيق"></div>
-        <div class="slide"><img src="hero4.jpeg" alt="حذاء Vedre عصري"></div>
-      </div>
+<!-- Products Section -->
+<section id="products" class="products" aria-label="منتجات Vedre">
 
-      <div class="product-info">
-        <h3>حذاء حريمي Vedre</h3>
-        <a
-          href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre"
-          target="_blank"
-          rel="noopener"
-          class="buy-btn"
-        >
-          تواصل على واتساب
-        </a>
-      </div>
-    </article>
+<h2 class="section-title">منتجاتنا</h2>
 
-        <!-- Product -->
-    <article class="product-card">
-      <span class="badge-new">NEW</span>
-      <div class="product-slider">
-        <div class="slide"><img src="hero1.jpeg" alt="حذاء Vedre حريمي"></div>
-        <div class="slide"><img src="hero2.jpeg" alt="حذاء نسائي من Vedre"></div>
-        <div class="slide"><img src="hero3.jpeg" alt="حذاء Vedre أنيق"></div>
-        <div class="slide"><img src="hero4.jpeg" alt="حذاء Vedre عصري"></div>
-      </div>
+<!-- Categories Links -->
+<div class="categories">
+<a href="women.html" class="cat-btn">حريمي</a>
+<a href="kids.html" class="cat-btn">أطفالي</a>
+<a href="bags.html" class="cat-btn">شنط</a>
+<a href="heels.html" class="cat-btn">هيلزات</a>
+<a href="boots.html" class="cat-btn">بوتات</a>
+</div>
 
-      <div class="product-info">
-        <h3>حذاء حريمي Vedre</h3>
-        <a
-          href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre"
-          target="_blank"
-          rel="noopener"
-          class="buy-btn"
-        >
-          تواصل على واتساب
-        </a>
-      </div>
-    </article>
+<div class="products-grid">
 
-        <!-- Product -->
-    <article class="product-card">
-      <span class="badge-new">NEW</span>
-      <div class="product-slider">
-        <div class="slide"><img src="hero1.jpeg" alt="حذاء Vedre حريمي"></div>
-        <div class="slide"><img src="hero2.jpeg" alt="حذاء نسائي من Vedre"></div>
-        <div class="slide"><img src="hero3.jpeg" alt="حذاء Vedre أنيق"></div>
-        <div class="slide"><img src="hero4.jpeg" alt="حذاء Vedre عصري"></div>
-      </div>
+<!-- Product -->
+<article class="product-card">
+<span class="badge-new">NEW</span>
 
-      <div class="product-info">
-        <h3>حذاء حريمي Vedre</h3>
-        <a
-          href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20حريمي%20Vedre"
-          target="_blank"
-          rel="noopener"
-          class="buy-btn"
-        >
-          تواصل على واتساب
-        </a>
-      </div>
-    </article>
+<div class="product-slider">
+<div class="slide"><img src="w10.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="w6.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="w8.2.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="w4.jpg" alt="حذاء Vedre"></div>
+</div>
 
-    
+</article>
 
-    <!-- Product -->
-    <article class="product-card">
-      <span class="badge-new">NEW</span>
-      <div class="product-slider">
-        <div class="slide"><img src="kids6.jpg" alt="حذاء Vedre للأطفال"></div>
-        <div class="slide"><img src="kids6.2.jpg" alt="حذاء أطفال من Vedre"></div>
-        <div class="slide"><img src="kids6.3.jpg" alt="حذاء Vedre للأطفال مودرن"></div>
-        <!-- <div class="slide"><img src="4.jpeg" alt="حذاء أطفال Vedre"></div> -->
-      </div>
+<!-- Product -->
+<article class="product-card">
+<span class="badge-new">NEW</span>
 
-      <div class="product-info">
-        <h3>حذاء أطفال Vedre</h3>
-        <a
-          href="https://wa.me/201150811175?text=اريد%20الاستفسار%20عن%20حذاء%20أطفال%20Vedre"
-          target="_blank"
-          rel="noopener"
-          class="buy-btn"
-        >
-          تواصل على واتساب
-        </a>
-      </div>
-    </article>
+<div class="product-slider">
+<div class="slide"><img src="w1.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="w2.2.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="w3.jpg" alt="حذاء Vedre"></div>
+<!-- <div class="slide"><img src="hero4.jpeg" alt="حذاء Vedre"></div> -->
+</div>
 
-  </div>
+</article>
+
+<!-- Product -->
+<article class="product-card">
+<span class="badge-new">NEW</span>
+
+<div class="product-slider">
+<div class="slide"><img src="kids2.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="kids10.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="kids15.2.jpg" alt="حذاء Vedre"></div>
+<div class="slide"><img src="kids13.2.jpg" alt="حذاء Vedre"></div>
+</div>
+
+</article>
+
+<!-- Product -->
+<article class="product-card">
+<span class="badge-new">NEW</span>
+
+<div class="product-slider">
+<div class="slide"><img src="kids6.jpg" alt="حذاء أطفال Vedre"></div>
+<div class="slide"><img src="kids18.jpg" alt="حذاء أطفال Vedre"></div>
+<div class="slide"><img src="kids1.jpg" alt="حذاء أطفال Vedre"></div>
+</div>
+
+</article>
+
+</div>
 </section>
 
 </main>
@@ -946,6 +983,22 @@
 </footer>
 
 <div id="coming-soon-popup">⚠️ هذا القسم سيُتوفر قريبًا. تابعنا لمعرفة التحديثات!</div>
+
+<!-- Image Viewer -->
+<div class="image-viewer" id="imageViewer">
+
+<span class="close-viewer">&times;</span>
+
+<img id="viewerImg">
+
+<div class="viewer-nav">
+
+<button id="prevImg">&#10094;</button>
+<button id="nextImg">&#10095;</button>
+
+</div>
+
+</div>
 <script>
 const whatsappContainer = document.querySelector('.whatsapp-container');
 const whatsappBtn = document.querySelector('.whatsapp-btn');
@@ -997,6 +1050,67 @@ document.querySelectorAll('.categories a').forEach(link => {
     }
   });
 });
+
+/* IMAGE VIEWER SCRIPT */
+
+const viewer = document.getElementById("imageViewer");
+const viewerImg = document.getElementById("viewerImg");
+
+const closeViewer = document.querySelector(".close-viewer");
+const nextBtn = document.getElementById("nextImg");
+const prevBtn = document.getElementById("prevImg");
+
+let currentImages = [];
+let currentIndex = 0;
+
+document.querySelectorAll(".product-card").forEach(card => {
+
+const imgs = card.querySelectorAll("img");
+
+imgs.forEach((img,i)=>{
+
+img.addEventListener("click",()=>{
+
+currentImages = Array.from(imgs).map(el=>el.src);
+currentIndex = i;
+
+viewer.classList.add("show");
+viewerImg.src = currentImages[currentIndex];
+
+});
+
+});
+
+});
+
+nextBtn.onclick = ()=>{
+
+currentIndex = (currentIndex + 1) % currentImages.length;
+viewerImg.src = currentImages[currentIndex];
+
+};
+
+prevBtn.onclick = ()=>{
+
+currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+viewerImg.src = currentImages[currentIndex];
+
+};
+
+closeViewer.onclick = ()=>{
+
+viewer.classList.remove("show");
+
+};
+
+viewer.onclick = (e)=>{
+
+if(e.target === viewer){
+viewer.classList.remove("show");
+}
+
+};
+
 </script>
 
 </body>
